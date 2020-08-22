@@ -2,16 +2,28 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'mainapp/index.html')
+    context = {
+        'page_title': 'INTERIOR',
+    }
+    return render(request, 'mainapp/index.html', context)
 
 
 def products(request):
-    return render(request, 'mainapp/products.html')
+    context = {
+        'page_title': 'Products',
+    }
+    return render(request, 'mainapp/products.html', context)
 
 
 def showroom(request):
-    return render(request, 'mainapp/showroom.html')
+    context = {
+        'page_title': 'Showroom',
+    }
+    return render(request, 'mainapp/showroom.html', context)
 
 
 def contact(request):
-    return render(request, 'mainapp/contact.html')
+    context = {
+        'page_title': 'Contact',
+    }
+    return render(request, 'mainapp/contact.html', context)
