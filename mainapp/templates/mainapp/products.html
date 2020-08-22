@@ -1,4 +1,5 @@
 {% extends 'mainapp/base.html' %}
+{% load static %}
 
 {% block container %}
     <section class="padding-site our-products clearfix">
@@ -30,31 +31,31 @@
             <div class="products-menu_border"></div>
         </div>
         <div class="trending-products">
-            <a class="trending-product" href="#"><img src="/static/img/product-11.jpg"
+            <a class="trending-product" href="#"><img src="{% static 'img/product-11.jpg' %}"
                                                       alt="product"></a>
-            <a class="trending-product" href="#"><img src="/static/img/product-21.jpg"
+            <a class="trending-product" href="#"><img src="{% static 'img/product-21.jpg' %}"
                                                       alt="product"></a>
-            <a class="trending-product" href="#"><img src="/static/img/product-31.jpg"
+            <a class="trending-product" href="#"><img src="{% static 'img/product-31.jpg' %}"
                                                       alt="product"></a>
-            <a class="trending-product" href="#"><img src="/static/img/product-41.jpg"
+            <a class="trending-product" href="#"><img src="{% static 'img/product-41.jpg' %}"
                                                       alt="product"></a>
-            <a class="trending-product" href="#"><img src="/static/img/product-5.jpg"
+            <a class="trending-product" href="#"><img src="{% static 'img/product-5.jpg' %}"
                                                       alt="product"></a>
-            <a class="trending-product" href="#"><img src="/static/img/product-6.jpg"
+            <a class="trending-product" href="#"><img src="{% static 'img/product-6.jpg' %}"
                                                       alt="product"></a>
         </div>
         <div class="trending-products trending-products_mt">
-            <a class="trending-product" href="#"><img src="/static/img/product-11.jpg"
+            <a class="trending-product" href="#"><img src="{% static 'img/product-11.jpg' %}"
                                                       alt="product"></a>
-            <a class="trending-product" href="#"><img src="/static/img/product-21.jpg"
+            <a class="trending-product" href="#"><img src="{% static 'img/product-21.jpg' %}"
                                                       alt="product"></a>
-            <a class="trending-product" href="#"><img src="/static/img/product-31.jpg"
+            <a class="trending-product" href="#"><img src="{% static 'img/product-31.jpg' %}"
                                                       alt="product"></a>
-            <a class="trending-product" href="#"><img src="/static/img/product-41.jpg"
+            <a class="trending-product" href="#"><img src="{% static 'img/product-41.jpg' %}"
                                                       alt="product"></a>
-            <a class="trending-product" href="#"><img src="/static/img/product-5.jpg"
+            <a class="trending-product" href="#"><img src="{% static 'img/product-5.jpg' %}"
                                                       alt="product"></a>
-            <a class="trending-product" href="#"><img src="/static/img/product-6.jpg"
+            <a class="trending-product" href="#"><img src="{% static 'img/product-6.jpg' %}"
                                                       alt="product"></a>
         </div>
         <a class="trending-products_icon-loop2" href="#"><span class="icon-loop2"></span></a>
@@ -65,7 +66,7 @@
             <h3 class="eclusive-h3">Fishnet Chair</h3>
             <p class="exlusive-content">Seat and back with upholstery made of cold cure foam. Steel
                 frame, available in matt</p>
-            <a href="#" class="button">Order Us <img src="/static/img/arrow.svg" alt="arrow"></a>
+            <a href="#" class="button">Order Us <img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
         </div>
         <div class="exclusive-container">
             <p class="eclusive-text">exclusive</p>
@@ -73,7 +74,7 @@
             <p class="exlusive-content">Seat and back with upholstery made of cold cure foam. Steel
                 frame, available in matt</p>
             <a href="#" class="button">Order Us
-                <img class="arrow" src="/static/img/arrow.svg" alt="arrow"></a>
+                <img class="arrow" src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
         </div>
     </section>
 {% endblock %}
