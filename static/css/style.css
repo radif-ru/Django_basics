@@ -74,11 +74,11 @@ body {
   text-decoration: none;
   padding: 10px 13px;
   transition: 0.1s; }
-  .menu_link:not(.menu_link__aktive):hover {
+  .menu_link:not(.menu_link__active):hover {
     color: #212121;
     border-bottom: solid 3px #212121; }
 
-.menu_link__aktive {
+.menu_link__active {
   color: #212121;
   font-weight: 700;
   border-bottom: solid 3px #212121; }
@@ -172,12 +172,12 @@ body {
   letter-spacing: -1.5px;
   border-bottom: solid 1px #6c6c6c; }
 
-.products-menu_link__aktive {
+.products-menu_link__active {
   color: #212121;
   border-bottom: solid 3px #212121;
   padding-bottom: 17px; }
 
-.products-menu_link:not(.products-menu_link__aktive):hover {
+.products-menu_link:not(.products-menu_link__active):hover {
   color: #212121; }
 
 .products-explore {

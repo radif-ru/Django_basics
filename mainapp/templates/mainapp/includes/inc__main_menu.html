@@ -2,30 +2,19 @@
 <header class="header">
     <a href="{% url 'index' %}"><img class="logo" src="{% static 'img/logo.svg' %}" alt="logo"></a>
     <ul class="menu clearfix">
-        <li class="menu_list">
-            <a href="{% url 'index' %}" class="menu_link menu_link__aktive">
-                HOME
-            </a>
-        </li>
-        <li class="menu_list">
-            <a href="{% url 'products' %}" class="menu_link">
-                PRODUCTS
-            </a>
-        </li>
-        <li class="menu_list">
-            <a href="#" class="menu_link">
-                HISTORY
-            </a></li>
-        <li class="menu_list">
-            <a href="{% url 'showroom' %}" class="menu_link">
-                SHOWROOM
-            </a>
-        </li>
-        <li class="menu_list">
-            <a href="{% url 'contact' %}" class="menu_link">
-                CONTACT
-            </a>
-        </li>
+        {% for link in links_menu.links_menu %}
+            <li class="menu_list">
+                <a href="{% url link.href|default:"#" %}"
+                   class="
+                   menu_link
+                   {% if request.resolver_match.url_name == link.href %}
+                   menu_link__active
+                   {% endif %}
+">
+                    {{ link.name|upper }}
+                </a>
+            </li>
+        {% endfor %}
         <li class="menu_list">
             <a href="#" class="menu_link"><img src="{% static 'img/search.svg' %}" alt="img"></a>
         </li>
