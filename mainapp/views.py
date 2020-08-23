@@ -5,13 +5,13 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 with open(os.path.join(BASE_DIR, 'mainapp/templates/mainapp/jsons/links_menu.json')) as f:
-    links_menu = json.loads(f.read())
+    LINKS_MENU = json.loads(f.read())
 
 
 def index(request):
     context = {
         'page_title': 'INTERIOR',
-        'links_menu': links_menu,
+        'links_menu': LINKS_MENU,
     }
     return render(request, 'mainapp/index.html', context)
 
@@ -20,7 +20,7 @@ def products(request):
     context = {
         'page_title': 'Products',
         'add_class_names': ' exclusive_margin',
-        'links_menu': links_menu,
+        'links_menu': LINKS_MENU,
     }
     return render(request, 'mainapp/products.html', context)
 
@@ -28,7 +28,7 @@ def products(request):
 def showroom(request):
     context = {
         'page_title': 'Showroom',
-        'links_menu': links_menu,
+        'links_menu': LINKS_MENU,
     }
     return render(request, 'mainapp/showroom.html', context)
 
@@ -41,6 +41,6 @@ def contact(request):
     context = {
         'page_title': 'Contact',
         'locations': locations,
-        'links_menu': links_menu,
+        'links_menu': LINKS_MENU,
     }
     return render(request, 'mainapp/contact.html', context)
