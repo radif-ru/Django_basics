@@ -60,21 +60,5 @@
         </div>
         <a class="trending-products_icon-loop2" href="#"><span class="icon-loop2"></span></a>
     </section>
-    <section class="exclusive exclusive_margin clearfix">
-        <div class="exclusive-container">
-            <p class="eclusive-text">exclusive</p>
-            <h3 class="eclusive-h3">Fishnet Chair</h3>
-            <p class="exlusive-content">Seat and back with upholstery made of cold cure foam. Steel
-                frame, available in matt</p>
-            <a href="#" class="button">Order Us <img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
-        </div>
-        <div class="exclusive-container">
-            <p class="eclusive-text">exclusive</p>
-            <h3 class="eclusive-h3">Fishnet Chair</h3>
-            <p class="exlusive-content">Seat and back with upholstery made of cold cure foam. Steel
-                frame, available in matt</p>
-            <a href="#" class="button">Order Us
-                <img class="arrow" src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
-        </div>
-    </section>
+    {% include 'mainapp/includes/inc__exclusive_products.html' %}
 {% endblock %}

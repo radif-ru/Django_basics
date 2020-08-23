@@ -8,7 +8,7 @@
     <section class="interior-contact padding-site">
 
         {% if locations %}
-            {% for location in locations %}
+            {% for location in locations.locations %}
                 <div class="contact"><a href="#">
                     <span class="icon-location contact__location-font"></span>
                     <h4>{{ location.city }}</h4>
