@@ -2,8 +2,8 @@
 <section class="
 exclusive
 clearfix
-{% url 'main:products' as products %}
-{% if '/'|add:request.resolver_match.url_name|add:'/' == products %}
+{% url 'main:showroom' as showroom %}
+{% if '/'|add:request.resolver_match.url_name|add:'/' == showroom %}
    exclusive_margin
 {% endif %}
 ">
