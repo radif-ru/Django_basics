@@ -1,11 +1,15 @@
 from django.shortcuts import render
+from shop.settings import BASE_DIR
 import json
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 with open(os.path.join(BASE_DIR, 'mainapp/templates/mainapp/jsons/links_menu.json')) as f:
     LINKS_MENU = json.loads(f.read())
+
+with open(
+        os.path.join(BASE_DIR, 'mainapp/templates/mainapp/jsons/contact_locations.json')) as f:
+    LOCATIONS = json.loads(f.read())
 
 
 def index(request):
@@ -19,7 +23,6 @@ def index(request):
 def products(request):
     context = {
         'page_title': 'Products',
-        'add_class_names': ' exclusive_margin',
         'links_menu': LINKS_MENU,
     }
     return render(request, 'mainapp/products.html', context)
@@ -34,13 +37,9 @@ def showroom(request):
 
 
 def contact(request):
-    with open(
-            os.path.join(BASE_DIR, 'mainapp/templates/mainapp/jsons/contact_locations.json')) as f:
-        locations = json.loads(f.read())
-
     context = {
         'page_title': 'Contact',
-        'locations': locations,
+        'locations': LOCATIONS,
         'links_menu': LINKS_MENU,
     }
     return render(request, 'mainapp/contact.html', context)
