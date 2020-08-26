@@ -2,7 +2,7 @@
 <section class="
 exclusive
 clearfix
-{% url 'products' as products %}
+{% url 'main:products' as products %}
 {% if '/'|add:request.resolver_match.url_name|add:'/' == products %}
    exclusive_margin
 {% endif %}
