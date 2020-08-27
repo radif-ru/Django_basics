@@ -7,11 +7,13 @@
         <div class="dealis-links-container clearfix">
             <ul class="dealis-links">
                 <li class="dealis-links-li"><a href="#" class="dealis-links-a">All</a></li>
-                <li class="dealis-links-li"><a href="#" class="dealis-links-a">HOME</a></li>
-                <li class="dealis-links-li"><a href="#" class="dealis-links-a">OFFICE</a></li>
-                <li class="dealis-links-li"><a href="#" class="dealis-links-a">FURNITURE</a></li>
-                <li class="dealis-links-li"><a href="#" class="dealis-links-a">MODERN</a></li>
-                <li class="dealis-links-li"><a href="#" class="dealis-links-a">CLASSIC</a></li>
+                {% for category in categories %}
+                    <li class="dealis-links-li">
+                        <a href="#" class="dealis-links-a">
+                            {{ category.name }}
+                        </a>
+                    </li>
+                {% endfor %}
             </ul>
         </div>
     </section>
