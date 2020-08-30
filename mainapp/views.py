@@ -1,15 +1,15 @@
 from django.shortcuts import render
 
 from mainapp.models import ProductCategory
-from shop.settings import BASE_DIR
+from shop.settings import BASE_DIR, JSON_PATH
 import json
 import os
 
-with open(os.path.join(BASE_DIR, 'mainapp/templates/mainapp/jsons/links_menu.json'),
+with open(os.path.join(BASE_DIR, f'{JSON_PATH}/links_menu.json'),
           encoding="utf-8") as f:
     LINKS_MENU = json.loads(f.read())
 
-with open(os.path.join(BASE_DIR, 'mainapp/templates/mainapp/jsons/contact_locations.json'),
+with open(os.path.join(BASE_DIR, f'{JSON_PATH}/contact_locations.json'),
           encoding="utf-8") as f:
     LOCATIONS = json.loads(f.read())
 

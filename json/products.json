@@ -1,0 +1,56 @@
+[
+  {
+    "category": "furniture",
+    "name": "office chair",
+    "image": "products_images/product-21.jpg",
+    "short_desc": "офисный стул",
+    "description": "зачётный",
+    "price": "949.99",
+    "quantity": 25
+  },
+  {
+    "category": "home",
+    "name": "mortar and pestle",
+    "image": "products_images/product-5.jpg",
+    "short_desc": "ступка и пестик",
+    "description": "высокое качество",
+    "price": "1550.44",
+    "quantity": 2
+  },
+  {
+    "category": "modern",
+    "name": "wall-mounted cartridge",
+    "image": "products_images/product-6.jpg",
+    "short_desc": "настенный патрон",
+    "description": "довольно неплох",
+    "price": "550.62",
+    "quantity": 1500
+  },
+  {
+    "category": "modern",
+    "name": "chandelier",
+    "image": "products_images/product-11.jpg",
+    "short_desc": "люстра",
+    "description": "высокое качество",
+    "price": "3550.12",
+    "quantity": 800
+  },
+  {
+    "category": "office",
+    "name": "floor lamp",
+    "image": "products_images/product-31.jpg",
+    "short_desc": "торшер",
+    "description": "так себе",
+    "price": "10.20",
+    "quantity": 12500
+  },
+  {
+    "category": "classic",
+    "name": "wall lamp",
+    "image": "products_images/product-41.jpg",
+    "short_desc": "бра",
+    "description": "необычный",
+    "price": "5.10",
+    "quantity": 112500
+  }
+]
