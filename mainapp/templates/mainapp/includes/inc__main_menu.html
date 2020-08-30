@@ -1,13 +1,13 @@
 {% load static %}
 <header class="header">
-    <a href="{% url 'index' %}"><img class="logo" src="{% static 'img/logo.svg' %}" alt="logo"></a>
+    <a href="{% url 'main:index' %}"><img class="logo" src="{% static 'img/logo.svg' %}" alt="logo"></a>
     <ul class="menu clearfix">
         {% for link in links_menu.links_menu %}
             <li class="menu_list">
-                <a href="{% url link.href|default:"#" %}"
+                <a href="{% url link.href %}"
                    class="
                    menu_link
-                   {% if request.resolver_match.url_name == link.href %}
+                   {% if 'main:'|add:request.resolver_match.url_name == link.href %}
                    menu_link__active
                    {% endif %}
 ">

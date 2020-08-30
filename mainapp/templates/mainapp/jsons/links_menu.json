@@ -1,18 +1,18 @@
 {"links_menu": [
   {
-    "href": "index",
+    "href": "main:index",
     "name": "home"
   },
   {
-    "href": "products",
+    "href": "main:products",
     "name": "products"
   },
   {
-    "href": "showroom",
+    "href": "main:showroom",
     "name": "showroom"
   },
   {
-    "href": "contact",
+    "href": "main:contact",
     "name": "contact"
   }
 ]}

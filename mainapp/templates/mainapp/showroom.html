@@ -2,58 +2,35 @@
 {% load static %}
 
 {% block container %}
-    <section class="padding-site clearfix">
+    <section class="padding-site our-products clearfix">
         {% include 'mainapp/includes/inc__main_menu.html' %}
-        <div class="dealis-links-container clearfix">
-            <ul class="dealis-links">
-                <li class="dealis-links-li"><a href="#" class="dealis-links-a">All</a></li>
-                <li class="dealis-links-li"><a href="#" class="dealis-links-a">HOME</a></li>
-                <li class="dealis-links-li"><a href="#" class="dealis-links-a">OFFICE</a></li>
-                <li class="dealis-links-li"><a href="#" class="dealis-links-a">FURNITURE</a></li>
-                <li class="dealis-links-li"><a href="#" class="dealis-links-a">MODERN</a></li>
-                <li class="dealis-links-li"><a href="#" class="dealis-links-a">CLASSIC</a></li>
-            </ul>
-        </div>
-    </section>
-    <section class="product-dealis">
-        <div class="product-dealis-container">
-            <div class="product-dealis-container-img"><img src="{% static 'img/slider1.jpg' %}"
-                                                           alt="image"></div>
-            <div class="product-dealis-container-img-menu">
-                <img src="{% static 'img/controll.jpg' %}" alt="image">
-                <img src="{% static 'img/controll11.jpg' %}" alt="image">
-                <img src="{% static 'img/controll2.jpg' %}" alt="image"></div>
-        </div>
-        <div class="product-dealis-container">
-            <h3>Fishnet Chair</h3>
-            <p>Hot Deal</p>
-            <p>$ <span>36.7</span>/sq</p>
-            <a href="#" class="button button_width__red">Order Us <img
-                    src="{% static 'img/arrow-white.svg' %}" alt="arrow"></a>
-            <div class="product-dealis-text">
-                <p>The majesty of Mountains - Ugmonk style.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                    incididunt ut labore</p>
-                <p> et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-            </div>
-        </div>
+        <p class="our-products-text">Our Products Range</p>
     </section>
     <section class="trending clearfix padding-site">
-        <div class="trending-header clearfix">
-            <h4 class="trending-h4">Related Products</h4>
-            <a href="#" class="products-explore">explore all <img src="{% static 'img/arrow.svg' %}"
-                                                                  alt="image"></a>
+        <div class="products-header products-header_margin">
+            <ul class="products-menu">
+                <li class="products-menu_list">
+                    <a href="#" class="products-menu_link products-menu_link__active products-menu__active2">
+                        All
+                    </a>
+                </li>
+                {% for category in categories %}
+                    <li class="products-menu_list">
+                        <a href="#" class="products-menu_link products-menu__font">
+                            {{ category.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="products-menu_border"></div>
+        </div>
+        <div class="trending-products">
+            {% include 'mainapp/includes/inc__trending_products.html' %}
         </div>
         <div class="trending-products trending-products_mt">
-            <a class="trending-product" href="#"><img src="{% static 'img/product-11.jpg' %}"
-                                                      alt="product"></a>
-            <a class="trending-product" href="#"><img src="{% static 'img/product-21.jpg' %}"
-                                                      alt="product"></a>
-            <a class="trending-product" href="#"><img src="{% static 'img/product-31.jpg' %}"
-                                                      alt="product"></a>
+            {% include 'mainapp/includes/inc__trending_products.html' %}
         </div>
+        <a class="trending-products_icon-loop2" href="#"><span class="icon-loop2"></span></a>
     </section>
+    {% include 'mainapp/includes/inc__exclusive_products.html' %}
 {% endblock %}
