@@ -13,7 +13,7 @@ with open(os.path.join(BASE_DIR, 'mainapp/templates/mainapp/jsons/contact_locati
           encoding="utf-8") as f:
     LOCATIONS = json.loads(f.read())
 
-CATEGORIES = ProductCategory.objects.all()[:9]
+CATEGORIES = ProductCategory.objects.all()
 
 
 def index(request):
@@ -28,7 +28,7 @@ def products(request):
     context = {
         'page_title': 'Products',
         'links_menu': LINKS_MENU,
-        'categories': CATEGORIES,
+        'categories': CATEGORIES[:5],
     }
     return render(request, 'mainapp/products.html', context)
 
