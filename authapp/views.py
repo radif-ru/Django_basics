@@ -34,7 +34,9 @@ def logout(request):
 
 
 def user_register(request):
+    print(request.method)
     if request.method == 'POST':
+        print('data:', request.POST)
         register_form = ShopUserRegisterForm(data=request.POST, files=request.FILES)
         if register_form.is_valid():  # errors dict
             register_form.save()
@@ -43,7 +45,7 @@ def user_register(request):
         register_form = ShopUserRegisterForm()
     context = {
         'page_title': 'регистрация',
-        'form': register_form
+        'register_form': register_form
     }
 
     return render(request, 'authapp/user_register.html', context)
