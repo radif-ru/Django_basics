@@ -1,6 +1,9 @@
 {% extends 'authapp/base.html' %}
 
 {% block container %}
+    <div class="h2 text-center head">
+        Профиль пользователя
+    </div>
     <form class="form-horizontal" method="post">
         {% csrf_token %}
         {{ form.as_p }}
