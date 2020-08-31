@@ -3,15 +3,14 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from authapp.forms import MyAuthenticationForm
+from authapp.forms import ShopUserAuthenticationForm, ShopUserRegisterForm, ShopUserProfileForm
 
 
 def login(request):
     # print(request.method)
-    form = None
     if request.method == 'POST':
         # print('data:', request.POST)
-        form = MyAuthenticationForm(data=request.POST)
+        form = ShopUserAuthenticationForm(data=request.POST)
         if form.is_valid():  # errors dict
             username = request.POST['username']
             password = request.POST['password']
@@ -20,8 +19,8 @@ def login(request):
                 auth.login(request, user)
                 # return HttpResponseRedirect('/')  # хардкод, лучше так не делать
                 return HttpResponseRedirect(reverse('main:index'))
-    elif request.method == 'GET':
-        form = MyAuthenticationForm()
+    else:
+        form = ShopUserAuthenticationForm()
     context = {
         'page_title': 'аутентификация',
         'form': form
@@ -34,5 +33,19 @@ def logout(request):
     return HttpResponseRedirect(reverse('main:index'))
 
 
-def register(request):
-    pass
+def user_register(request):
+    form = ShopUserRegisterForm()
+    context = {
+        'page_title': 'регистрация',
+        'form': form
+    }
+    return render(request, 'authapp/login.html', context)
+
+
+def user_profile(request):
+    form = ShopUserProfileForm()
+    context = {
+        'page_title': 'профиль',
+        'form': form
+    }
+    return render(request, 'authapp/login.html', context)
