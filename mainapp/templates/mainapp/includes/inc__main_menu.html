@@ -26,6 +26,9 @@
             </li>
         {% else %}
             <li class="menu_list">
+                <a href="{% url 'auth:user_register' %}" class="menu_link">
+                    регистрация
+                </a>
                 <a href="{% url 'auth:login' %}" class="menu_link">
                     вход
                 </a>

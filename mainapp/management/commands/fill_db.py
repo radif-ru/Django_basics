@@ -49,4 +49,5 @@ class Command(BaseCommand):
             # создать суперюзера
             ShopUser.objects.create_superuser(username='django',
                                               email='admin@shop.local',
-                                              password='geekbrains')
+                                              password='geekbrains',
+                                              age='29')

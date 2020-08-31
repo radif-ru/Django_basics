@@ -22,12 +22,14 @@ class ShopUserAuthenticationForm(AuthenticationForm):
 class ShopUserRegisterForm(UserCreationForm):
     class Meta:
         model = ShopUser
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
+        fields = ('username', 'first_name', 'last_name', 'email',
+                  'password1', 'password2', 'age', 'avatar')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = f'form-control {field_name}'
+            # field.help_text = ''  # очистка стандартного справочного теккста (слишком громоздкий)
 
             if field_name == 'username':
                 field.widget.attrs['placeholder'] = 'введите имя'

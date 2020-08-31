@@ -34,12 +34,19 @@ def logout(request):
 
 
 def user_register(request):
-    form = ShopUserRegisterForm()
+    if request.method == 'POST':
+        register_form = ShopUserRegisterForm(data=request.POST, files=request.FILES)
+        if register_form.is_valid():  # errors dict
+            register_form.save()
+            return HttpResponseRedirect(reverse('auth:login'))
+    else:
+        register_form = ShopUserRegisterForm()
     context = {
         'page_title': 'регистрация',
-        'form': form
+        'form': register_form
     }
-    return render(request, 'authapp/login.html', context)
+
+    return render(request, 'authapp/user_register.html', context)
 
 
 def user_profile(request):
