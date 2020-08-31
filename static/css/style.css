@@ -689,5 +689,7 @@ body {
   .login .btn {
     margin-top: 2px;
     border-top: 1px solid #ced4da; }
+  .login .username::placeholder, .login .password::placeholder {
+    color: salmon; }
 
 /*# sourceMappingURL=style.css.map */
