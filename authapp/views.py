@@ -18,7 +18,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user and user.is_active:
                 auth.login(request, user)
-                # return HttpResponseRedirect('/')
+                # return HttpResponseRedirect('/')  # хардкод, лучше так не делать
                 return HttpResponseRedirect(reverse('main:index'))
     elif request.method == 'GET':
         form = MyAuthenticationForm()
@@ -30,7 +30,8 @@ def login(request):
 
 
 def logout(request):
-    pass
+    auth.logout(request)
+    return HttpResponseRedirect(reverse('main:index'))
 
 
 def register(request):
