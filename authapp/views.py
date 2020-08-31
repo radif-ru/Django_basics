@@ -1,8 +1,15 @@
 from django.shortcuts import render
 
+from authapp.forms import MyAuthenticationForm
+
 
 def login(request):
-    pass
+    form = MyAuthenticationForm()
+    context = {
+        'page_title': 'аутентификация',
+        'form': form
+    }
+    return render(request, 'authapp/login.html', context)
 
 
 def logout(request):

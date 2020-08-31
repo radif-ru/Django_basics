@@ -1,0 +1,12 @@
+{% extends 'authapp/base.html' %}
+
+{% block container %}
+    <form class="form-horizontal" method="post">
+        {{ form.as_p }}
+        <input type="submit" value="Войти" class="form-control">
+    </form>
+    <a href="{#% url 'auth:user_register' %#}"
+       class='btn btn-round form-control'>
+        зарегистрироваться
+    </a>
+{% endblock %}

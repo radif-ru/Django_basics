@@ -1,1 +1,1 @@
-python manage.py loaddata dumps/mainapp.json
+python manage.py loaddata json/dumps/mainapp.json

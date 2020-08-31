@@ -679,4 +679,15 @@ body {
     .product-dealis-text p {
       margin-bottom: 20px; }
 
+.login {
+  width: 50%;
+  margin: 10% auto 0 auto;
+  border-top: 1px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
+  border-radius: 5%;
+  padding-top: 1%; }
+  .login .btn {
+    margin-top: 2px;
+    border-top: 1px solid #ced4da; }
+
 /*# sourceMappingURL=style.css.map */

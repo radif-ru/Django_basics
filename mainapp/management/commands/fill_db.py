@@ -33,7 +33,7 @@ class Command(BaseCommand):
             # _category = ProductCategory.objects.get(name=category_name)
             # _category = ProductCategory.objects.filter(name=category_name).first()
             # _category = list(ProductCategory.objects.filter(name=category_name))[0]
-            _category = ProductCategory.objects.get(name=category_name)
+            _category = ProductCategory.objects.get(name=category_name)  # .get() -> concrete object
             # Заменяем название категории объектом
             product['category'] = _category
             new_product = Product(**product)
