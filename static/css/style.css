@@ -689,7 +689,13 @@ body {
   .login .btn {
     margin-top: 2px;
     border-top: 1px solid #ced4da; }
-  .login .username::placeholder, .login .password::placeholder {
-    color: salmon; }
+  .login .form-control::placeholder {
+    color: darkgreen; }
+
+.helptext {
+  color: salmon; }
+
+.errorlist {
+  color: red; }
 
 /*# sourceMappingURL=style.css.map */

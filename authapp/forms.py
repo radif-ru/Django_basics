@@ -1,6 +1,16 @@
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
+import django.forms as forms
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm, \
+    PasswordChangeForm
 
 from authapp.models import ShopUser
+
+
+class CleanAgeMixin:
+    def clean_age(self):
+        data = self.cleaned_data['age']
+        if data < 18:
+            raise forms.ValidationError('Вы слишком молоды!')
+        return data
 
 
 class ShopUserAuthenticationForm(AuthenticationForm):
@@ -19,7 +29,7 @@ class ShopUserAuthenticationForm(AuthenticationForm):
                 field.widget.attrs['placeholder'] = 'введите пароль'
 
 
-class ShopUserRegisterForm(UserCreationForm):
+class ShopUserRegisterForm(UserCreationForm, CleanAgeMixin):
     class Meta:
         model = ShopUser
         fields = ('username', 'first_name', 'last_name', 'email',
@@ -29,25 +39,50 @@ class ShopUserRegisterForm(UserCreationForm):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = f'form-control {field_name}'
-            # field.help_text = ''  # очистка стандартного справочного теккста (слишком громоздкий)
+            # field.help_text = ''  # очистка стандартного справочного текста (слишком громоздкий)
 
             if field_name == 'username':
                 field.widget.attrs['placeholder'] = 'введите имя'
-            elif field_name == 'password':
+                field.help_text = '* обязательное поле'
+            elif field_name == 'password1' or field_name == 'password2':
                 field.widget.attrs['placeholder'] = 'введите пароль'
+                field.help_text = '* обязательное поле'
+            elif field_name == 'age':
+                field.widget.attrs['placeholder'] = 'введите Ваш возраст'
+                field.help_text = '* обязательное поле'
 
 
-class ShopUserProfileForm(UserChangeForm):
+class ShopUserProfileForm(UserChangeForm, CleanAgeMixin):
     class Meta:
         model = ShopUser
-        fields = ('username', 'first_name', 'email', 'password')
+        fields = ('username', 'first_name', 'last_name', 'email', 'password', 'age', 'avatar')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = f'form-control {field_name}'
+            field.help_text = ''
 
             if field_name == 'username':
                 field.widget.attrs['placeholder'] = 'введите имя'
             elif field_name == 'password':
-                field.widget.attrs['placeholder'] = 'введите пароль'
+                field.widget = forms.HiddenInput()
+
+
+class ShopUserPasswordEditForm(PasswordChangeForm):
+    class Meta:
+        model = ShopUser
+        fields = ("old_password", "new_password1", "new_password2")
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = f'form-control {field_name}'
+            field.help_text = ''
+
+            if field_name == 'old_password':
+                field.widget.attrs['placeholder'] = 'введите старый пароль'
+            elif field_name == 'new_password1':
+                field.widget.attrs['placeholder'] = 'введите новый пароль'
+            elif field_name == 'new_password2':
+                field.widget.attrs['placeholder'] = 'подтвердите новый пароль'
