@@ -13,7 +13,7 @@
             {% for product in products %}
                 <li class="products_list">
                     <a href="{% url 'basket:add' product.pk %}" class="products_link"><img
-                            src="{{ media_url }}/{{ product.image }}" alt="image">
+                            src="{{ media_url }}/{{ product.image }}" alt="image"  class="products-img">
                         <div class="products_list__hov">
                             <img class="products_list__hov-img" src="{% static 'img/arrow.svg' %}"
                                  alt="image">

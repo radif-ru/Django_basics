@@ -1,6 +1,10 @@
 <div class="dealis-links-container clearfix">
     <ul class="dealis-links">
-        <li class="dealis-links-li"><a href="#" class="dealis-links-a">All</a></li>
+        <li class="dealis-links-li">
+            <a href="{% url 'main:catalog' pk=0 %}" class="dealis-links-a">
+                {{ category.name }}
+            </a>
+        </li>
         {% for category in categories %}
             <li class="dealis-links-li">
                 <a href="{% url 'main:catalog' pk=category.pk %}" class="dealis-links-a">

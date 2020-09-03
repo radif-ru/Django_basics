@@ -58,8 +58,12 @@ def catalog(request, pk):
     # try:
     #     category = ProductCategory.objects.get(pk=pk)
     # except ...
-    category = get_object_or_404(ProductCategory, pk=pk)
-    products = Product.objects.filter(category=category)
+    if pk == 0:
+        category = {'pk': 0, 'name': 'all'}
+        products = Product.objects.all()
+    else:
+        category = get_object_or_404(ProductCategory, pk=pk)
+        products = Product.objects.filter(category=category)
     media_url = MEDIA_URL
     context = {
         'page_title': 'Catalog',
