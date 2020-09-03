@@ -13,7 +13,7 @@ def add(request, pk):
     # print(pk, type(pk))
     product = get_object_or_404(Product, pk=pk)
     basket = BasketItem.objects.filter(user=request.user, product=product).first()
-    # basket = request.user.basket_set.filter(product=pk).first
+    # basket = request.user.basketitem_set.filter(product=pk).first()
 
     if not basket:
         basket = BasketItem(user=request.user, product=product)
