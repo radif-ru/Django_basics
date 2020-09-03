@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path
+from django.urls import path, re_path
 
 import basketapp.views as basketapp
 
@@ -21,4 +21,7 @@ app_name = 'basketapp'
 
 urlpatterns = [
     path('', basketapp.index, name='index'),
+
+    path('add/product/<int:pk>/', basketapp.add, name='add'),
+    # re_path(r'^add/product/(?P<pk>\d+)/$', basketapp.add, name='add'),
 ]
