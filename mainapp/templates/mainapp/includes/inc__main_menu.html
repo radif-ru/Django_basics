@@ -35,10 +35,13 @@
             </li>
         {% endif %}
         <li class="menu_list">
-            <a href="#" class="menu_link">Basket</a>
+            <a href="{% url 'basket:index' %}" class="menu_link">
+                Корзина:
+                {{ user_basket }}
+            </a>
         </li>
         <li class="menu_list">
-            <a href="{% url 'basket:index' %}" class="menu_link"><img src="{% static 'img/search.svg' %}" alt="img"></a>
+            <a href="#" class="menu_link"><img src="{% static 'img/search.svg' %}" alt="img"></a>
         </li>
     </ul>
 </header>

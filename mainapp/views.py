@@ -5,6 +5,7 @@ from django.shortcuts import render, get_object_or_404
 
 from mainapp.models import ProductCategory, Product
 from shop.settings import BASE_DIR, JSON_PATH, MEDIA_URL
+from basketapp.models import BasketItem
 
 with open(os.path.join(BASE_DIR, f'{JSON_PATH}/links_menu.json'),
           encoding="utf-8") as f:
@@ -19,10 +20,20 @@ def get_categories():
     return ProductCategory.objects.all()
 
 
+def get_user_basket(request):
+    quantity = 0
+    price = 0
+    for item in BasketItem.objects.filter(user_id=request.user.id):
+        quantity += item.quantity
+        price += Product.objects.filter(id=item.product_id).first().price *  quantity
+    return f'{quantity}шт., на {price}р.'
+
+
 def index(request):
     context = {
         'page_title': 'INTERIOR',
         'links_menu': LINKS_MENU,
+        'user_basket': get_user_basket(request),
     }
     return render(request, 'mainapp/index.html', context)
 
@@ -32,6 +43,7 @@ def products(request):
         'page_title': 'Products',
         'links_menu': LINKS_MENU,
         'categories': get_categories()[:5],
+        'user_basket': get_user_basket(request),
     }
     return render(request, 'mainapp/products.html', context)
 
@@ -41,6 +53,7 @@ def showroom(request):
         'page_title': 'Showroom',
         'links_menu': LINKS_MENU,
         'categories': get_categories(),
+        'user_basket': get_user_basket(request),
     }
     return render(request, 'mainapp/showroom.html', context)
 
@@ -50,6 +63,7 @@ def contact(request):
         'page_title': 'Contact',
         'locations': LOCATIONS,
         'links_menu': LINKS_MENU,
+        'user_basket': get_user_basket(request),
     }
     return render(request, 'mainapp/contact.html', context)
 
@@ -72,5 +86,6 @@ def catalog(request, pk):
         'category': category,
         'products': products,
         'media_url': media_url,
+        'user_basket': get_user_basket(request),
     }
     return render(request, 'mainapp/catalog.html', context)
