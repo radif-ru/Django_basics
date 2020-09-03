@@ -4,18 +4,7 @@
 {% block container %}
     <section class="padding-site clearfix">
         {% include 'mainapp/includes/inc__main_menu.html' %}
-        <div class="dealis-links-container clearfix">
-            <ul class="dealis-links">
-                <li class="dealis-links-li"><a href="#" class="dealis-links-a">All</a></li>
-                {% for category in categories %}
-                    <li class="dealis-links-li">
-                        <a href="#" class="dealis-links-a">
-                            {{ category.name }}
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
+        {% include 'mainapp/includes/inc__product_menu.html' %}
     </section>
     <section class="product-dealis">
         <div class="product-dealis-container">

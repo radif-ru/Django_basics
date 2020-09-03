@@ -1,0 +1,26 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block container %}
+    <section class="padding-site clearfix">
+        {% include 'mainapp/includes/inc__main_menu.html' %}
+        {% include 'mainapp/includes/inc__product_menu.html' %}
+    </section>
+    <section class="products padding-site clearfix">
+        <h2>Продукты в категории {{ category.name|capfirst }}</h2>
+        <ul class="products_container">
+
+            {% for product in products %}
+                <li class="products_list"><a href="#" class="products_link"><img
+                        src="{{ media_url }}/{{ product.image }}" alt="image" width="270px" height="270px">
+                    <div class="products_list__hov">
+                        <img class="products_list__hov-img" src="{% static 'img/arrow.svg' %}"
+                             alt="image">
+                        <h5 class="products_list__hov-h5">{{ product.name|title}}</h5>
+                        <p class="products_list__hov-p">{{ product.short_desc|capfirst }}</p>
+                    </div>
+                </a></li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

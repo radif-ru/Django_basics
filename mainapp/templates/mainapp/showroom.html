@@ -7,23 +7,7 @@
         <p class="our-products-text">Our Products Range</p>
     </section>
     <section class="trending clearfix padding-site">
-        <div class="products-header products-header_margin">
-            <ul class="products-menu">
-                <li class="products-menu_list">
-                    <a href="#" class="products-menu_link products-menu_link__active products-menu__active2">
-                        All
-                    </a>
-                </li>
-                {% for category in categories %}
-                    <li class="products-menu_list">
-                        <a href="#" class="products-menu_link products-menu__font">
-                            {{ category.name }}
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-            <div class="products-menu_border"></div>
-        </div>
+        {% include 'mainapp/includes/ink__showroom_menu.html' %}
         <div class="trending-products">
             {% include 'mainapp/includes/inc__trending_products.html' %}
         </div>
