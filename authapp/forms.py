@@ -44,12 +44,15 @@ class ShopUserRegisterForm(UserCreationForm, CleanAgeMixin):
             if field_name == 'username':
                 field.widget.attrs['placeholder'] = 'введите имя'
                 field.help_text = '* обязательное поле'
+                field.label += '*'
             elif field_name == 'password1' or field_name == 'password2':
                 field.widget.attrs['placeholder'] = 'введите пароль'
                 field.help_text = '* обязательное поле'
+                field.label += '*'
             elif field_name == 'age':
                 field.widget.attrs['placeholder'] = 'введите Ваш возраст'
                 field.help_text = '* обязательное поле'
+                field.label += '*'
 
 
 class ShopUserProfileForm(UserChangeForm, CleanAgeMixin):
