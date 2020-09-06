@@ -1,13 +1,4 @@
-{% load static %}
-<a class="trending-product" href="#"><img src="{% static 'img/product-11.jpg' %}"
-                                          alt="product"></a>
-<a class="trending-product" href="#"><img src="{% static 'img/product-21.jpg' %}"
-                                          alt="product"></a>
-<a class="trending-product" href="#"><img src="{% static 'img/product-31.jpg' %}"
-                                          alt="product"></a>
-<a class="trending-product" href="#"><img src="{% static 'img/product-41.jpg' %}"
-                                          alt="product"></a>
-<a class="trending-product" href="#"><img src="{% static 'img/product-5.jpg' %}"
-                                          alt="product"></a>
-<a class="trending-product" href="#"><img src="{% static 'img/product-6.jpg' %}"
-                                          alt="product"></a>
+{% for product in products %}
+    <a class="trending-product" href="{% url 'basket:add' product.pk %}">
+        <img src="{{ media_url }}{{ product.image }}" alt="{{ product.name }}"></a>
+{% endfor %}

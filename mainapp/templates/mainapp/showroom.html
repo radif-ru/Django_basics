@@ -11,10 +11,9 @@
         <div class="trending-products">
             {% include 'mainapp/includes/inc__trending_products.html' %}
         </div>
-        <div class="trending-products trending-products_mt">
-            {% include 'mainapp/includes/inc__trending_products.html' %}
-        </div>
         <a class="trending-products_icon-loop2" href="#"><span class="icon-loop2"></span></a>
     </section>
-    {% include 'mainapp/includes/inc__exclusive_products.html' %}
+    <section class="exclusive clearfix exclusive_margin">
+        {% include 'mainapp/includes/inc__exclusive_products.html' %}
+    </section>
 {% endblock %}

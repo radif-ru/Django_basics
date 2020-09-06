@@ -35,16 +35,11 @@
     <section class="trending clearfix padding-site">
         <div class="trending-header clearfix">
             <h4 class="trending-h4">Related Products</h4>
-            <a href="#" class="products-explore">explore all <img src="{% static 'img/arrow.svg' %}"
+            <a href="{% url 'main:showroom' %}" class="products-explore">explore all <img src="{% static 'img/arrow.svg' %}"
                                                                   alt="image"></a>
         </div>
         <div class="trending-products trending-products_mt">
-            <a class="trending-product" href="#"><img src="{% static 'img/product-11.jpg' %}"
-                                                      alt="product"></a>
-            <a class="trending-product" href="#"><img src="{% static 'img/product-21.jpg' %}"
-                                                      alt="product"></a>
-            <a class="trending-product" href="#"><img src="{% static 'img/product-31.jpg' %}"
-                                                      alt="product"></a>
+            {% include 'mainapp/includes/inc__trending_products.html' %}
         </div>
     </section>
 {% endblock %}

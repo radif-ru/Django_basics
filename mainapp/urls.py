@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path, re_path
+from django.urls import path
 
 import mainapp.views as mainapp
 
@@ -27,5 +27,6 @@ urlpatterns = [
     # re_path(r'^category/(?P<pk>\d+)/catalog/$', mainapp.catalog, name='catalog'),
 
     path('showroom/', mainapp.showroom, name='showroom'),
+    path('category/<int:pk>/showroom/', mainapp.showroom, name='showroom_catalog'),
     path('contact/', mainapp.contact, name='contact'),
 ]

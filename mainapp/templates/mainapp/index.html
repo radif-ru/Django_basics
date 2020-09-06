@@ -25,60 +25,21 @@
                 </li>
                 <li class="products-menu_list"><a href="#" class="products-menu_link">New</a></li>
             </ul>
-            <a href="#" class="products-explore">explore all <img src="{% static 'img/arrow.svg' %}"
-                                                                  alt="image"></a>
+            <a href="{% url 'main:showroom' %}" class="products-explore">explore all <img
+                    src="{% static 'img/arrow.svg' %}"
+                    alt="image"></a>
         </div>
-        <ul class="products_container">
-            <li class="products_list"><a href="#" class="products_link"><img
-                    src="{% static 'img/product-1.jpg' %}" alt="image">
-                <div class="products_list__hov">
-                    <img class="products_list__hov-img" src="{% static 'img/arrow.svg' %}"
-                         alt="image">
-                    <h5 class="products_list__hov-h5">Fishnet Chair</h5>
-                    <p class="products_list__hov-p">Seat and back with upholstery made of cold cure
-                        foam</p>
-                </div>
-            </a></li>
-            <li class="products_list"><a href="#" class="products_link"><img
-                    src="{% static 'img/product-2.jpg' %}" alt="image">
-                <div class="products_list__hov">
-                    <img class="products_list__hov-img" src="{% static 'img/arrow.svg' %}"
-                         alt="image">
-                    <h5 class="products_list__hov-h5">Fishnet Chair</h5>
-                    <p class="products_list__hov-p">Seat and back with upholstery made of cold cure
-                        foam
-                    </p>
-                </div>
-            </a></li>
-            <li class="products_list"><a href="#" class="products_link"><img
-                    src="{% static 'img/product-3.jpg' %}" alt="image">
-                <div class="products_list__hov">
-                    <img class="products_list__hov-img" src="{% static 'img/arrow.svg' %}"
-                         alt="image">
-                    <h5 class="products_list__hov-h5">Fishnet Chair</h5>
-                    <p class="products_list__hov-p">Seat and back with upholstery made of cold cure
-                        foam</p>
-                </div>
-            </a></li>
-            <li class="products_list"><a href="#" class="products_link"><img
-                    src="{% static 'img/product-4.jpg' %}" alt="image">
-                <div class="products_list__hov">
-                    <img class="products_list__hov-img" src="{% static 'img/arrow.svg' %}"
-                         alt="image">
-                    <h5 class="products_list__hov-h5">Fishnet Chair</h5>
-                    <p class="products_list__hov-p">Seat and back with upholstery made of cold cure
-                        foam
-                    </p>
-                </div>
-            </a></li>
-        </ul>
+        {% include 'mainapp/includes/inc__featured_new_products.html' %}
     </section>
-    {% include 'mainapp/includes/inc__exclusive_products.html' %}
+    <section class="exclusive clearfix">
+        {% include 'mainapp/includes/inc__exclusive_products.html' %}
+    </section>
     <section class="trending clearfix padding-site">
         <div class="trending-header clearfix">
             <h4 class="trending-h4">Trending Products</h4>
-            <a href="#" class="products-explore">explore all <img src="{% static 'img/arrow.svg' %}"
-                                                                  alt="image"></a>
+            <a href="{% url 'main:showroom' %}" class="products-explore">explore all <img
+                    src="{% static 'img/arrow.svg' %}"
+                    alt="image"></a>
         </div>
         <div class="trending-products trending-products_mt">
             {% include 'mainapp/includes/inc__trending_products.html' %}
