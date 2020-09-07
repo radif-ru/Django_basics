@@ -6,6 +6,10 @@
     </div>
     <form class="form-horizontal" method="post">
         {% csrf_token %}
+{#      для возврата на страницу покупки, после логина при покупке товара #}
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}">
+        {% endif %}
         {{ form.as_p }}
         <input type="submit" value="Войти" class="form-control">
     </form>

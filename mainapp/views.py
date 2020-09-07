@@ -51,7 +51,6 @@ def products(request):
     hot_product = get_hot_product()
     _related_products = related_products(hot_product)
 
-    products = Product.objects.all().order_by('price')
     context = {
         'page_title': 'Products',
         'links_menu': LINKS_MENU,

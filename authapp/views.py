@@ -9,6 +9,9 @@ from authapp.forms import ShopUserAuthenticationForm, ShopUserRegisterForm, Shop
 
 
 def login(request):
+    # для возврата на страницу покупки, после логина при покупке товара
+    next = request.GET['next'] if 'next' in request.GET.keys() else ''
+
     # print(request.method)  # смотрим метод запроса
     if request.method == 'POST':
         # print('data:', request.POST)  # смотрим что приходит в POST
@@ -20,12 +23,16 @@ def login(request):
             if user and user.is_active:
                 auth.login(request, user)
                 # return HttpResponseRedirect('/')  # хардкод, лучше так не делать
-                return HttpResponseRedirect(reverse('main:index'))
+                if 'next' in request.POST.keys():
+                    return HttpResponseRedirect(request.POST['next'])
+                else:
+                    return HttpResponseRedirect(reverse('main:index'))
     else:
         form = ShopUserAuthenticationForm()
     context = {
         'page_title': 'аутентификация',
-        'form': form
+        'form': form,
+        'next': next,
     }
     return render(request, 'authapp/login.html', context)
 
