@@ -709,5 +709,14 @@ body {
 .basket-items {
   text-transform: lowercase;
   font-weight: bold; }
+.basket-item-wrapper {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1% 0;
+  border-bottom: 1px solid darkgreen; }
+  .basket-item-wrapper img {
+    width: 240px;
+    height: 240px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -5,10 +5,23 @@ from django.urls import reverse
 
 from basketapp.models import BasketItem
 from mainapp.models import Product
+from mainapp.views import LINKS_MENU, get_categories
+from shop.settings import MEDIA_URL
 
 
+@login_required
 def index(request):
-    pass
+    # basket_items = BasketItem.objects.filter(user=request.user)
+    # basket_items = request.user.basketitem_set.all()
+    # при добавлении related_name в модель .._set перестаёт работать, работает заданное имя:
+    basket_items = request.user.user_basket.all()
+    context = {
+        'page_title': 'корзина',
+        'links_menu': LINKS_MENU,
+        'media_url': MEDIA_URL,
+        'basket_items': basket_items,
+    }
+    return render(request, 'basketapp/index.html', context)
 
 
 @login_required
