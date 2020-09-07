@@ -18,23 +18,23 @@
                     </label>
                     {#                <span class="product_cost">{{ item.product_cost }}&nbsp;руб</span>#}
 
-                    {#                <a href="{% url 'basket:delete_product' item.pk %}" class="btn btn-round">#}
-                    {#                    удалить#}
-                    {#                </a>#}
+                    <a href="{% url 'basket:delete' item.pk %}" class="btn btn-round">
+                        <span class="icon-delete"></span>
+                    </a>
                 </div>
 
             {% endfor %}
 
             <div class="basket_summary">
-                {#                В корзине {{ basket.0.total_quantity }} товаров общей стоимостью#}
-                {#                {{ basket.0.total_cost }} руб#}
+                В корзине товаров {{ user.basket_total_quantity }} шт, общей стоимостью
+                {{ user.basket_cost }} руб
             </div>
         {% else %}
             <h4>Корзина пуста</h4>
         {% endif %}
 
-        <a href="{% url 'main:index' %}" class="btn btn-round">
-            на главную
+        <a href="{% url 'main:index' %}" class="btn btn-round in-home">
+            На главную
         </a>
     </div>
 

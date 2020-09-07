@@ -41,3 +41,9 @@ def add(request, pk):
     basket.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def delete(request, pk):
+    get_object_or_404(BasketItem, pk=pk).delete()
+    return HttpResponseRedirect(reverse('basket:index'))

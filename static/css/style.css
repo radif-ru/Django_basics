@@ -218,7 +218,7 @@ body {
 .products_list:hover .products_list__hov {
   display: block;
   position: absolute;
-  top: 62px;
+  top: 10%;
   text-align: center;
   width: 100%; }
 
@@ -706,17 +706,39 @@ body {
 .forms-menu {
   color: salmon; }
 
+.basket .icon-basket {
+  display: inline-block;
+  transform: scale(1.5);
+  margin: 0 5px; }
+.basket-list {
+  text-align: center; }
+  .basket-list .in-home {
+    font-size: 200%;
+    color: salmon;
+    border: 2px solid salmon;
+    margin-top: 10px; }
 .basket-items {
   text-transform: lowercase;
   font-weight: bold; }
 .basket-item-wrapper {
   display: inline-flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   padding: 1% 0;
   border-bottom: 1px solid darkgreen; }
   .basket-item-wrapper img {
     width: 240px;
     height: 240px; }
+  .basket-item-wrapper .icon-delete {
+    display: inline-block;
+    font-size: 30px;
+    transition: 0.3s;
+    color: salmon; }
+    .basket-item-wrapper .icon-delete:hover {
+      transform: scale(1.5); }
+    .basket-item-wrapper .icon-delete:active {
+      transition: 0s;
+      color: red; }
 
 /*# sourceMappingURL=style.css.map */

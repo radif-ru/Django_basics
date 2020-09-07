@@ -9,6 +9,7 @@
                 <h5 class="products_list__hov-h5">{{ product.name|title }}</h5>
                 <p class="products_list__hov-p">{{ product.short_desc|capfirst }}</p>
                 <p class="products_list__hov-p">{{ product.description|capfirst }}</p>
+                <p class="products_list__hov-p">Цена: {{ product.price }}руб.</p>
             </div>
         </a></li>
     {% endfor %}

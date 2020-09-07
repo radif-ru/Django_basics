@@ -20,15 +20,6 @@ def get_categories():
     return ProductCategory.objects.all()
 
 
-def get_user_basket(request):
-    quantity = 0
-    price = 0
-    for item in BasketItem.objects.filter(user_id=request.user.id):
-        quantity += item.quantity
-        price += Product.objects.filter(id=item.product_id).first().price * quantity
-    return f'{quantity}шт., на {price}р.'
-
-
 def index(request):
     print(request.POST)
     featured_new_products = Product.objects.all().order_by('pk')
@@ -36,7 +27,6 @@ def index(request):
     context = {
         'page_title': 'INTERIOR',
         'links_menu': LINKS_MENU,
-        'user_basket': get_user_basket(request),
         'products': products[:3],
         'media_url': MEDIA_URL,
         'featured_new_products': featured_new_products[:4],
@@ -50,7 +40,6 @@ def products(request):
         'page_title': 'Products',
         'links_menu': LINKS_MENU,
         'categories': get_categories(),
-        'user_basket': get_user_basket(request),
         'products': products[:3],
         'media_url': MEDIA_URL,
     }
@@ -68,7 +57,6 @@ def showroom(request, pk=0):
         'page_title': 'Showroom',
         'links_menu': LINKS_MENU,
         'categories': get_categories(),
-        'user_basket': get_user_basket(request),
         'products': products[:6],
         'media_url': MEDIA_URL,
     }
@@ -80,7 +68,6 @@ def contact(request):
         'page_title': 'Contact',
         'locations': LOCATIONS,
         'links_menu': LINKS_MENU,
-        'user_basket': get_user_basket(request),
     }
     return render(request, 'mainapp/contact.html', context)
 
@@ -102,6 +89,5 @@ def catalog(request, pk):
         'category': category,
         'featured_new_products': products,
         'media_url': MEDIA_URL,
-        'user_basket': get_user_basket(request),
     }
     return render(request, 'mainapp/catalog.html', context)

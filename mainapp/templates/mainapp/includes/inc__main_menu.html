@@ -37,8 +37,8 @@
     {% if user.is_authenticated %}
         <li class="menu_list">
             <a href="{% url 'basket:index' %}" class="menu_link forms-menu basket">
-                Корзина:
-                <span class="basket-items">{{ user_basket }}</span>
+                <span class="icon-basket"></span>
+                <span class="basket-items">{{ user.basket_cost|floatformat:0 }}руб ({{ user.basket_total_quantity }}шт)</span>
             </a>
         </li>
     {% endif %}
