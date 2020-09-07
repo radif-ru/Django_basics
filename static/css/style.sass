@@ -187,8 +187,8 @@ body
   border-bottom: solid 1px $color-style1
 
 .products-menu_link__active
-  color: $color-style2
-  border-bottom: solid 3px $color-style2
+  color: $color-style2!important
+  border-bottom: solid 3px $color-style2!important
   padding-bottom: 17px
 
 .products-menu_link:not(.products-menu_link__active):hover
@@ -584,6 +584,7 @@ body
     height: 1px
     width: 300px
     top: 40px
+    z-index: -1
 
 .trending
   position: relative
@@ -812,6 +813,10 @@ body
 
 .margin_bottom_0
   margin-bottom: 0
+
+.product_menu_link__active
+  font-weight: bold!important
+  color: black!important
 //Django forms
 
 @media screen and (min-width: 1200px)
