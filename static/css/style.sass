@@ -217,7 +217,7 @@ body
   margin: 0 30px 30px 0
   position: relative
 
-  &:nth-last-child(1)
+  &:nth-child(4n)
     margin-right: 0
 
   &:hover .products_link > img
@@ -330,8 +330,9 @@ body
   &:nth-child(3n)
     margin-right: -30px
 
-  &:nth-child(n+4)
-    margin-bottom: -30px
+  img
+    width: 370px
+    height: 370px
 
 /*trending
 
@@ -675,9 +676,10 @@ body
 
 .product-dealis
   display: flex
-  margin-bottom: 245px
+  margin-bottom: 60px
   &-container
     display: inline-block
+    margin-bottom: 11px
     &-img
       img
         height: 570px
@@ -800,6 +802,7 @@ body
     img
       width: 240px
       height: 240px
+      border-radius: 15%
     .icon-delete
       display: inline-block
       font-size: 30px

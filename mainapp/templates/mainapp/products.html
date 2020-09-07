@@ -25,10 +25,7 @@
                 Us <img
                         src="{% static 'img/arrow-white.svg' %}" alt="arrow"></a>
             <div class="product-dealis-text">
-                <p>Краткое описание: <br>
-                {{ hot_product.short_desc|capfirst }}</p>
-                <p>Описание: <br>
-                {{ hot_product.description|capfirst }}</p>
+                <p>{{ hot_product.short_desc|capfirst }}</p>
             </div>
         </div>
     </section>

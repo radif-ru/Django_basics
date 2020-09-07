@@ -85,7 +85,7 @@ def showroom(request, pk=0):
         'page_title': 'Showroom',
         'links_menu': LINKS_MENU,
         'categories': get_categories(),
-        'products': products[:6],
+        'products': products,
         'media_url': MEDIA_URL,
     }
     return render(request, 'mainapp/showroom.html', context)
