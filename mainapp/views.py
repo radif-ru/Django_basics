@@ -30,6 +30,7 @@ def get_user_basket(request):
 
 
 def index(request):
+    print(request.POST)
     featured_new_products = Product.objects.all().order_by('pk')
     products = Product.objects.all().order_by('price')
     context = {

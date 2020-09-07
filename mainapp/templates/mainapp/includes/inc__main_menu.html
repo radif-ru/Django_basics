@@ -17,29 +17,31 @@
         {% endfor %}
         {% if user.is_authenticated %}
             <li class="menu_list">
-                <a href="{% url 'auth:user_profile' %}" class="menu_link">
+                <a href="{% url 'auth:user_profile' %}" class="menu_link forms-menu">
                     {{ user.first_name|default:'Пользователь' }}
                 </a>
-                <a href="{% url 'auth:logout' %}" class="menu_link">
+                <a href="{% url 'auth:logout' %}" class="menu_link forms-menu">
                     выход
                 </a>
             </li>
         {% else %}
             <li class="menu_list">
-                <a href="{% url 'auth:user_register' %}" class="menu_link">
+                <a href="{% url 'auth:user_register' %}" class="menu_link forms-menu">
                     регистрация
                 </a>
-                <a href="{% url 'auth:login' %}" class="menu_link">
+                <a href="{% url 'auth:login' %}" class="menu_link forms-menu">
                     вход
                 </a>
             </li>
         {% endif %}
+    {% if user.is_authenticated %}
         <li class="menu_list">
-            <a href="{% url 'basket:index' %}" class="menu_link">
+            <a href="{% url 'basket:index' %}" class="menu_link forms-menu basket">
                 Корзина:
-                {{ user_basket }}
+                <span class="basket-items">{{ user_basket }}</span>
             </a>
         </li>
+    {% endif %}
         <li class="menu_list">
             <a href="#" class="menu_link"><img src="{% static 'img/search.svg' %}" alt="img"></a>
         </li>
