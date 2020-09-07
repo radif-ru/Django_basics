@@ -626,9 +626,15 @@ body {
   margin-bottom: 245px; }
   .product-dealis-container {
     display: inline-block; }
+    .product-dealis-container-img img {
+      height: 570px;
+      width: 570px; }
     .product-dealis-container-img-menu {
       text-align: center;
       margin-top: 11px; }
+      .product-dealis-container-img-menu img {
+        height: 70px;
+        width: 70px; }
       .product-dealis-container-img-menu img:hover {
         cursor: pointer;
         transform: scale(1.1); }
@@ -740,5 +746,8 @@ body {
     .basket-item-wrapper .icon-delete:active {
       transition: 0s;
       color: red; }
+
+.margin_bottom_0 {
+  margin-bottom: 0; }
 
 /*# sourceMappingURL=style.css.map */

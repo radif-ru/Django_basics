@@ -28,5 +28,8 @@ urlpatterns = [
 
     path('showroom/', mainapp.showroom, name='showroom'),
     path('category/<int:pk>/showroom/', mainapp.showroom, name='showroom_catalog'),
+
+    path('product/<int:pk>/', mainapp.product_page, name='product_page'),
+
     path('contact/', mainapp.contact, name='contact'),
 ]
