@@ -38,7 +38,7 @@
         <li class="menu_list">
             <a href="{% url 'basket:index' %}" class="menu_link forms-menu basket">
                 <span class="icon-basket"></span>
-                <span class="basket-items">{{ user.basket_cost|floatformat:0 }} руб ({{ user.basket_total_quantity }} шт)</span>
+                <span class="basket-items">{{ user.basket_cost|floatformat:0 }} &#8381; ({{ user.basket_total_quantity }} шт)</span>
             </a>
         </li>
     {% endif %}

@@ -34,13 +34,13 @@ def get_categories():
 
 
 def index(request):
-    print(request.POST)
+    # print(request.POST)
     featured_new_products = Product.objects.all().order_by('pk')
-    products = Product.objects.all().order_by('price')
+    all_products = Product.objects.all().order_by('price')
     context = {
         'page_title': 'INTERIOR',
         'links_menu': LINKS_MENU,
-        'products': products[:3],
+        'products': all_products[:3],
         'media_url': MEDIA_URL,
         'featured_new_products': featured_new_products[:4],
     }
@@ -76,15 +76,15 @@ def product_page(request, pk):
 def showroom(request, pk=0):
     if pk == 0:
         category = {'pk': 0, 'name': 'all'}
-        products = Product.objects.all().order_by('-pk')
+        all_products = Product.objects.all().order_by('-pk')
     else:
         category = get_object_or_404(ProductCategory, pk=pk)
-        products = Product.objects.filter(category=category).order_by('price')
+        all_products = Product.objects.filter(category=category).order_by('price')
     context = {
         'page_title': 'Showroom',
         'links_menu': LINKS_MENU,
         'categories': get_categories(),
-        'products': products,
+        'products': all_products,
         'media_url': MEDIA_URL,
     }
     return render(request, 'mainapp/showroom.html', context)
@@ -105,16 +105,16 @@ def catalog(request, pk):
     # except ...
     if pk == 0:
         category = {'pk': 0, 'name': 'all'}
-        products = Product.objects.all().order_by('price')
+        all_products = Product.objects.all().order_by('price')
     else:
         category = get_object_or_404(ProductCategory, pk=pk)
-        products = Product.objects.filter(category=category).order_by('price')
+        all_products = Product.objects.filter(category=category).order_by('price')
     context = {
         'page_title': 'Catalog',
         'links_menu': LINKS_MENU,
         'categories': get_categories(),
         'category': category,
-        'featured_new_products': products,
+        'products': all_products,
         'media_url': MEDIA_URL,
     }
     return render(request, 'mainapp/catalog.html', context)

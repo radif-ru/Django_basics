@@ -758,4 +758,17 @@ body {
   font-weight: bold !important;
   color: black !important; }
 
+.avatar {
+  padding: 3px; }
+
+input[type="submit"], .btn-round {
+  box-shadow: 0 2px 1px 1px rgba(33, 33, 33, 0.35);
+  border: 1px solid #ced4da; }
+
+input[type="submit"]:active, .btn:active {
+  box-shadow: none; }
+
+input[type="submit"]:hover, .btn:hover {
+  background-color: gainsboro; }
+
 /*# sourceMappingURL=style.css.map */

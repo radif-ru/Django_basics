@@ -7,8 +7,12 @@
     <form class="form-horizontal" method="post">
         {% csrf_token %}
 {#      для возврата на страницу покупки, после логина при покупке товара #}
-        {% if next %}
-            <input type="hidden" name="next" value="{{ next }}">
+{#        {% if redirect_url %}#}
+{#            <input type="hidden" name="redirect_url" value="{{ redirect_url }}">#}
+{#        {% endif %}#}
+{#        Вариант №2. Создаём поле в форме, передав туда гет запрос во вьюхе login: (form.redirect_url)#}
+        {% if form.redirect_url %}
+            {{ form.redirect_url }}
         {% endif %}
         {{ form.as_p }}
         <input type="submit" value="Войти" class="form-control">

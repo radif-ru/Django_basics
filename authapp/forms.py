@@ -20,6 +20,12 @@ class ShopUserAuthenticationForm(AuthenticationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        # для возврата на страницу покупки, после логина при покупке товара
+        if 'next' in self.data.keys():
+            self.redirect_url = forms.HiddenInput()\
+                .render(name='redirect_url', value=self.data['next'])
+
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = f'form-control {field_name}'
 

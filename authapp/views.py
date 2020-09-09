@@ -1,5 +1,5 @@
+from django import forms
 from django.contrib import auth
-from django.contrib.auth.hashers import check_password
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -10,7 +10,9 @@ from authapp.forms import ShopUserAuthenticationForm, ShopUserRegisterForm, Shop
 
 def login(request):
     # для возврата на страницу покупки, после логина при покупке товара
-    next = request.GET['next'] if 'next' in request.GET.keys() else ''
+    # redirect_url = request.GET['next'] if 'next' in request.GET.keys() else ''
+    # или так:
+    # redirect_url = request.GET.get('next', None)
 
     # print(request.method)  # смотрим метод запроса
     if request.method == 'POST':
@@ -23,16 +25,17 @@ def login(request):
             if user and user.is_active:
                 auth.login(request, user)
                 # return HttpResponseRedirect('/')  # хардкод, лучше так не делать
-                if 'next' in request.POST.keys():
-                    return HttpResponseRedirect(request.POST['next'])
-                else:
-                    return HttpResponseRedirect(reverse('main:index'))
+                # if 'redirect_url' in request.POST.keys():
+                if request.POST.get('redirect_url', None):
+                    return HttpResponseRedirect(request.POST['redirect_url'])
+                return HttpResponseRedirect(reverse('main:index'))
     else:
-        form = ShopUserAuthenticationForm()
+        # form = ShopUserAuthenticationForm()
+        form = ShopUserAuthenticationForm(data=request.GET)
     context = {
         'page_title': 'аутентификация',
         'form': form,
-        'next': next,
+        # 'redirect_url': redirect_url,
     }
     return render(request, 'authapp/login.html', context)
 
