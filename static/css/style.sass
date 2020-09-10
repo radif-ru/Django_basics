@@ -63,9 +63,11 @@ body
   img
     transition: 0.3s
   float: right
+
   &_list:last-child a
     &:hover
       border: none
+
       & img
         transform: scale(1.3)
 
@@ -81,6 +83,7 @@ body
   text-decoration: none
   padding: 10px 13px
   transition: 0.1s
+
   &:not(.menu_link__active):hover
     color: $color-style2
     border-bottom: solid 3px $color-style2
@@ -187,8 +190,8 @@ body
   border-bottom: solid 1px $color-style1
 
 .products-menu_link__active
-  color: $color-style2!important
-  border-bottom: solid 3px $color-style2!important
+  color: $color-style2 !important
+  border-bottom: solid 3px $color-style2 !important
   padding-bottom: 17px
 
 .products-menu_link:not(.products-menu_link__active):hover
@@ -515,6 +518,7 @@ body
   font-weight: 700
   text-transform: uppercase
   letter-spacing: 0.6px
+
   &:last-child:hover
     color: $color-style2
     cursor: help
@@ -557,6 +561,7 @@ body
 
 .products-header
   position: relative
+
   &_margin
     margin-top: 71px
     margin-bottom: 50px
@@ -569,6 +574,7 @@ body
     border: none
     position: relative
     letter-spacing: 1.8px
+
     &:hover
       color: $color-style2
       border-bottom: solid 3px $color-style2
@@ -579,6 +585,7 @@ body
     font-weight: 700
     text-transform: uppercase
     letter-spacing: 1.8px
+
   &_border
     position: absolute
     border-bottom: solid 1px $color-style1
@@ -589,10 +596,12 @@ body
 
 .trending
   position: relative
+
   .trending-products
     &_mt
       padding-top: 60px
       clear: both
+
     &_icon-loop2
       position: absolute
       bottom: -131px
@@ -602,6 +611,7 @@ body
       display: inline-block
       text-decoration: none
       transition: 1s
+
       &:hover
         transform: rotate(360deg)
 
@@ -617,33 +627,41 @@ body
   justify-content: space-between
   margin-top: 71px
   margin-bottom: 122px
+
   .contact
     width: 370px
     height: 370px
     border: 1px solid #9c9c9c
     text-align: center
+
     &:hover
       background: $color-style1
+
     &:hover p
       color: $color-style2
+
     &__location-font
       font-size: 48px
       display: inline-block
       margin-top: 48px
       margin-bottom: 34px
+
     h4
       font-size: 22px
       font-weight: 700
       text-transform: uppercase
       margin-bottom: 23px
+
     p
       color: $color-style1
       font-size: 14px
       font-weight: 700
+
     p:not(:last-child):nth-child(2n)
       color: $color-style2
       font-weight: 700
       margin-bottom: 13px
+
     a
       text-decoration: none
       color: inherit
@@ -654,14 +672,17 @@ body
   background-color: #f4f4f4
   padding: 24px 0
   margin: 29px 0 72px 0
+
 .dealis-links
   width: 647px
   display: flex
   justify-content: space-between
   margin: 0 auto
+
   .dealis-links-li
     list-style: none
     display: inline-block
+
     .dealis-links-a
       text-decoration: none
       color: $color-style1
@@ -669,59 +690,72 @@ body
       text-transform: uppercase
       letter-spacing: 1.8px
       font-weight: 700
+
       &:hover
         color: $color-style2
+
       &:active
         text-shadow: 2px 2px 2px $color-style1
 
 .product-dealis
   display: flex
   margin-bottom: 60px
+
   &-container
     display: inline-block
     margin-bottom: 11px
+
     &-img
       img
         height: 570px
         width: 570px
+
       &-menu
         img
           height: 70px
           width: 70px
         text-align: center
         margin-top: 11px
+
         img
           &:hover
             cursor: pointer
             transform: scale(1.1)
+
           &:active
             box-shadow: 1px 1px 5px $color-style1
+
     &:nth-child(2)
       display: inline-block
       width: 510px
       text-align: center
       margin-top: 47px
       margin-left: 56px
+
     h3
       color: $color-style2
       font-size: 36px
       font-weight: 700
+
     > p:first-of-type
-        color: #e53935
-        font-size: 18px
-        font-weight: 700
-        text-transform: uppercase
-        letter-spacing: 1.8px
-        margin-top: 15px
-        margin-bottom: 23px
+      color: #e53935
+      font-size: 18px
+      font-weight: 700
+      text-transform: uppercase
+      letter-spacing: 1.8px
+      margin-top: 15px
+      margin-bottom: 23px
+
     > p:nth-of-type(2)
       color: #212121
       font-size: 36px
       font-weight: 300
       font-family: Gotham-Light
+
       span
         font-size: 72px
         text-transform: uppercase
+
     .button
       &_width__red
         width: 100%
@@ -735,22 +769,25 @@ body
         border-radius: 35px
         margin-top: 21px
         margin-bottom: 49px
+
         img
           width: 15px
           height: 14px
           transform: scale(1.3)
         @extend %hover-active1
+
   &-text
     text-align: left
     color: $color-style2
     font-size: 16px
     font-weight: 300
+
     p
       margin-bottom: 20px
 
 //product-dealis
 
-//Django forms
+//Django, forms, basket
 //login, user_registration, user_profile
 .login
   width: 60%
@@ -759,9 +796,11 @@ body
   border-bottom: 1px solid #ced4da
   border-radius: 3%
   padding: 1%
+
   .btn
     margin-top: 2px
     border-top: 1px solid #ced4da
+
   .form-control::placeholder
     color: darkgreen
 
@@ -782,44 +821,63 @@ body
     display: inline-block
     transform: scale(1.5)
     margin: 0 5px
+
   &-list
     text-align: center
+
     .in-home
-        font-size: 200%
+      font-size: 200%
+      color: salmon
+      border: 2px solid salmon
+      margin-top: 10px
+
+    .basket-item-wrapper
+      display: inline-flex
+      justify-content: space-between
+      align-items: center
+      width: 100%
+      padding: 1% 0
+      border-bottom: 1px solid darkgreen
+
+      img
+        width: 240px
+        height: 240px
+        border-radius: 15%
+
+      .icon-delete
+        display: inline-block
+        font-size: 30px
+        transition: 0.3s
         color: salmon
-        border: 2px solid salmon
-        margin-top: 10px
+
+        &:hover
+          transform: scale(1.3)
+
+        &:active
+          transition: 0s
+          color: red
+
+    .basket-summary
+      font-size: 20px
+      font-weight: bold
+      color: salmon
+
+      span
+        color: saddlebrown
+
+    .product-qty
+      text-align: center
+
   &-items
     text-transform: lowercase
     font-weight: bold
-  &-item-wrapper
-    display: inline-flex
-    justify-content: space-between
-    align-items: center
-    width: 100%
-    padding: 1% 0
-    border-bottom: 1px solid darkgreen
-    img
-      width: 240px
-      height: 240px
-      border-radius: 15%
-    .icon-delete
-      display: inline-block
-      font-size: 30px
-      transition: 0.3s
-      color: salmon
-      &:hover
-        transform: scale(1.5)
-      &:active
-        transition: 0s
-        color: red
 
 .margin_bottom_0
   margin-bottom: 0
 
 .product_menu_link__active
-  font-weight: bold!important
-  color: black!important
+  font-weight: bold !important
+  color: black !important
 
 .avatar
   padding: 3px
@@ -833,7 +891,9 @@ input[type="submit"]:active, .btn:active
 
 input[type="submit"]:hover, .btn:hover
   background-color: gainsboro
-//Django forms
+
+//Django, forms, basket
+
 
 @media screen and (min-width: 1200px)
 
