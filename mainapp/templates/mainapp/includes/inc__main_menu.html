@@ -15,6 +15,16 @@
                 </a>
             </li>
         {% endfor %}
+        {% if user.is_superuser %}
+        <li class="menu_list">
+            <a href="{% url 'my_admin:index' %}" class="menu_link forms-menu">
+                админка
+            </a>
+            <a href="{% url 'auth:logout' %}" class="menu_link forms-menu">
+                выход
+            </a>
+        </li>
+        {% endif %}
         {% if user.is_authenticated %}
             <li class="menu_list">
                 <a href="{% url 'auth:user_profile' %}" class="menu_link forms-menu">
@@ -34,14 +44,14 @@
                 </a>
             </li>
         {% endif %}
-    {% if user.is_authenticated %}
-        <li class="menu_list">
-            <a href="{% url 'basket:index' %}" class="menu_link forms-menu basket">
-                <span class="icon-basket"></span>
-                <span class="basket-items">{{ user.basket_cost|floatformat:0 }} &#8381; ({{ user.basket_total_quantity }} шт)</span>
-            </a>
-        </li>
-    {% endif %}
+        {% if user.is_authenticated %}
+            <li class="menu_list">
+                <a href="{% url 'basket:index' %}" class="menu_link forms-menu basket">
+                    <span class="icon-basket"></span>
+                    <span class="basket-items">{{ user.basket_cost|floatformat:0 }} &#8381; ({{ user.basket_total_quantity }} шт)</span>
+                </a>
+            </li>
+        {% endif %}
         <li class="menu_list">
             <a href="#" class="menu_link"><img src="{% static 'img/search.svg' %}" alt="img"></a>
         </li>

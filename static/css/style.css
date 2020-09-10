@@ -779,4 +779,26 @@ input[type="submit"]:active, .btn:active {
 input[type="submit"]:hover, .btn:hover {
   background-color: gainsboro; }
 
+.admin-menu {
+  display: flex;
+  justify-content: center; }
+  .admin-menu-list {
+    list-style-type: none; }
+    .admin-menu-list a {
+      text-decoration: none; }
+
+.users-list .user-record {
+  display: flex;
+  justify-content: space-between; }
+  .users-list .user-record img {
+    width: 300px; }
+.users-list .user-role {
+  display: flex;
+  flex-direction: column; }
+  .users-list .user-role a:nth-child(2n) {
+    background: salmon;
+    border-color: salmon; }
+    .users-list .user-role a:nth-child(2n):hover {
+      background: #6c757d; }
+
 /*# sourceMappingURL=style.css.map */

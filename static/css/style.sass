@@ -892,6 +892,32 @@ input[type="submit"]:active, .btn:active
 input[type="submit"]:hover, .btn:hover
   background-color: gainsboro
 
+//Админка
+.admin-menu
+  display: flex
+  justify-content: center
+  &-list
+    list-style-type: none
+    a
+      text-decoration: none
+.users-list
+  .user-record
+    display: flex
+    justify-content: space-between
+
+    img
+      width: 300px
+
+  .user-role
+    display: flex
+    flex-direction: column
+
+    & a:nth-child(2n)
+      background: salmon
+      border-color: salmon
+      &:hover
+        background: #6c757d
+//Админка
 //Django, forms, basket
 
 
