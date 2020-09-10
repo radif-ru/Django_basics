@@ -3,9 +3,19 @@
         <a href="{% url 'main:index' %}" class="menu_link">на сайт</a>
     </li>
     <li class="admin-menu-list">
-        <a href="{% url 'my_admin:index' %}" class="menu_link">пользователи</a>
+        <a href="{% url 'my_admin:index' %}" class="
+        menu_link
+        {% if request.resolver_match.url_name == 'index' %}
+            menu_link__active
+        {% endif %}
+">пользователи</a>
     </li>
-    <li class="admin-menu-list" >
+    <li class="
+    admin-menu-list
+    {% if request.resolver_match.url_name == 'categories' or category.name %}
+        menu_link__active
+    {% endif %}
+" >
         <a href="{#% url 'myadmin:productcategories' %#}" class="menu_link">
             категории
             {% if category %}
