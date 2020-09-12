@@ -1,9 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import user_passes_test
-# Незалогиненного отправляем логинится. Проверяем является ли пользователь суперюзером
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
+from django.utils.decorators import method_decorator
 from django.views.generic import ListView
 
 from adminapp.forms import AdminShopUserCreateForm, AdminShopUserUpdateForm
@@ -11,6 +11,7 @@ from mainapp.models import ProductCategory
 from shop.settings import MEDIA_URL
 
 
+# Незалогиненного отправляем логинится. Проверяем является ли пользователь суперюзером
 # @user_passes_test(lambda x: x.is_superuser)
 # def index(request):
 #     users_list = get_user_model().objects.all().order_by(
@@ -26,12 +27,43 @@ from shop.settings import MEDIA_URL
 #     return render(request, 'adminapp/index.html', context)
 
 
-class UsersList(ListView):
+class OnlySuperUserMixin:
+    @method_decorator(user_passes_test(lambda x: x.is_superuser))
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+
+class PageTitleMixin:
+    def get_context_data(self, *, object_list=None, **kwargs):
+        data = super().get_context_data(object_list=None, **kwargs)
+        # print(data)
+        data['page_title'] = self.page_title
+        return data
+
+
+class MediaUrlMixin:
+    def get_context_data(self, *, object_list=None, **kwargs):
+        data = super().get_context_data(object_list=None, **kwargs)
+        # print(data)
+        data['media_url'] = self.media_url
+        return data
+
+
+class UsersList(OnlySuperUserMixin, PageTitleMixin, MediaUrlMixin, ListView):
     model = get_user_model()
-    extra_context = {
-        'page_title': 'админка/пользователи',
-        'media_url': MEDIA_URL
-    }
+
+    page_title = 'админка/пользователи'
+    media_url = MEDIA_URL
+
+    # extra_context = {
+    #     'page_title': 'админка/пользователи',
+    #     'media_url': MEDIA_URL
+    # }
+
+    # def get_queryset(self):
+    #     qs = super().get_queryset()
+    #     return qs
+    #     # return self.model.objects.all().order_by()
 
 
 @user_passes_test(lambda x: x.is_superuser)
@@ -111,8 +143,9 @@ def user_delete(request, pk):
 #     template_name = 'adminapp/categories_list.html'
 
 
-class CategoriesRead(ListView):
+class CategoriesRead(OnlySuperUserMixin, PageTitleMixin, ListView):
     model = ProductCategory
-    extra_context = {
-        'page_title': 'админка/категории',
-    }
+    page_title = 'админка/категории'
+    # extra_context = {
+    #     'page_title': 'админка/категории',
+    # }
