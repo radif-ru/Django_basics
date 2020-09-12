@@ -14,6 +14,8 @@ class CleanAgeMixin:
 
 
 class ShopUserAuthenticationForm(AuthenticationForm):
+    # redirect_url = forms.HiddenInput()
+
     class Meta:
         model = ShopUser
         fields = ('username', 'password')
@@ -22,10 +24,18 @@ class ShopUserAuthenticationForm(AuthenticationForm):
         super().__init__(*args, **kwargs)
 
         # для возврата на страницу покупки, после логина при покупке товара
+        # if 'next' in self.cleaned_data.keys():  # Не находит атрибут cleaned_data, оставил так же:
         if 'next' in self.data.keys():
+            # Не понял как с помощью initial сделать вывод:
+            # self.redirect_url.attrs['name'] = 'redirect_url'
+            # self.redirect_url.attrs['value'] = self.data['next']
+            # print(self.initial)
+            # self.initial.update({'redirect_url': self.redirect_url.render})
+            # Оставил сво вариант:
             self.redirect_url = forms.HiddenInput()\
                 .render(name='redirect_url', value=self.data['next'])
 
+        print(self.fields.items())
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = f'form-control {field_name}'
 

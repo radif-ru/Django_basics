@@ -1,6 +1,6 @@
 import django.forms as forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 
 class CleanAgeMixin:
@@ -21,7 +21,8 @@ class AdminShopUserCreateForm(UserCreationForm, CleanAgeMixin):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = f'form-control {field_name}'
-            # field.help_text = ''  # очистка стандартного справочного текста (слишком громоздкий)
+            # field.help_text = ''  # очистка стандартного справочного текста
+            # (слишком громоздкий)
 
             if field_name == 'username':
                 field.widget.attrs['placeholder'] = 'введите имя'
@@ -35,6 +36,29 @@ class AdminShopUserCreateForm(UserCreationForm, CleanAgeMixin):
                 field.widget.attrs['placeholder'] = 'введите возраст'
                 field.help_text = '* обязательное поле'
                 field.label += '*'
-
     # def clean_avatar(self):
     #     pass
+
+
+class AdminShopUserUpdateForm(UserChangeForm, CleanAgeMixin):
+    class Meta:
+        model = get_user_model()
+        fields = ('username', 'first_name', 'last_name', 'is_superuser', 'is_staff', 'is_active',
+                  'password', 'email', 'age', 'avatar')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = f'form-control {field_name}'
+            # field.help_text = ''  # очистка стандартного справочного текста (слишком громоздкий)
+
+            if field_name == 'username':
+                field.widget.attrs['placeholder'] = 'введите имя'
+                field.help_text = '* обязательное поле'
+                field.label += '*'
+            elif field_name == 'password':
+                field.widget = forms.HiddenInput()
+            elif field_name == 'age':
+                field.widget.attrs['placeholder'] = 'введите возраст'
+                field.help_text = '* обязательное поле'
+                field.label += '*'

@@ -794,7 +794,9 @@ input[type="submit"]:hover, .btn:hover {
   justify-content: space-between;
   margin-bottom: 1%; }
   .users-list .user-record img {
-    width: 200px; }
+    width: 200px;
+    height: 200px;
+    border-radius: 15%; }
 .users-list .user-role {
   display: flex;
   flex-direction: column; }
