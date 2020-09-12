@@ -896,13 +896,20 @@ input[type="submit"]:hover, .btn:hover
 .admin-menu
   display: flex
   justify-content: center
+
   &-list
     list-style-type: none
+
     a
       text-decoration: none
+
 .users-list
+  .not-active
+    opacity: 40%
+
   .new-user
     margin-bottom: 1%
+
   .user-record
     display: flex
     justify-content: space-between
@@ -920,8 +927,20 @@ input[type="submit"]:hover, .btn:hover
     & a:nth-child(2n)
       background: salmon
       border-color: salmon
+
       &:hover
         background: #6c757d
+
+.user-delete
+  display: flex
+  align-items: center
+  flex-direction: column
+
+  div
+    display: inline
+
+    form
+      display: inline
 //Админка
 //Django, forms, basket
 

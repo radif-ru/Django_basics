@@ -787,6 +787,8 @@ input[type="submit"]:hover, .btn:hover {
     .admin-menu-list a {
       text-decoration: none; }
 
+.users-list .not-active {
+  opacity: 40%; }
 .users-list .new-user {
   margin-bottom: 1%; }
 .users-list .user-record {
@@ -805,5 +807,14 @@ input[type="submit"]:hover, .btn:hover {
     border-color: salmon; }
     .users-list .user-role a:nth-child(2n):hover {
       background: #6c757d; }
+
+.user-delete {
+  display: flex;
+  align-items: center;
+  flex-direction: column; }
+  .user-delete div {
+    display: inline; }
+    .user-delete div form {
+      display: inline; }
 
 /*# sourceMappingURL=style.css.map */

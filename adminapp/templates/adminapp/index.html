@@ -7,9 +7,16 @@
             новый пользователь
         </a>
         {% for shop_user in users_list %}
-            <div class="user-record {% if not shop_user.is_active %}not-active{% endif %}">
-                <img src="{{ media_url }}{{ shop_user.avatar|default:'users_avatars/default.jpg' }}" alt="{{ shop_user.username }}">
+            <div class="user-record
+                {% if not shop_user.is_active %}
+                    not-active
+                {% endif %}">
+                <img src="{{ media_url }}{{ shop_user.avatar|default:'users_avatars/default.jpg' }}"
+                     alt="{{ shop_user.username }}">
                 <div class="user-role">
+                    {% if not shop_user.is_active %}
+                        не активный
+                    {% endif %}
                     {% if shop_user.is_superuser %}
                         администратор
                     {% elif shop_user.is_staff %}
@@ -21,10 +28,12 @@
                        class="btn btn-primary">
                         редактировать
                     </a>
-                    <a href="{#% url 'my_admin:user_delete' shop_user.pk %#}"
-                       class="btn btn-primary">
-                        удалить
-                    </a>
+                    {% if shop_user.is_active %}
+                        <a href="{% url 'my_admin:user_delete' pk=shop_user.pk %}"
+                           class="btn btn-primary">
+                            удалить
+                        </a>
+                    {% endif %}
                 </div>
                 <div class="user-name">
                     <p><strong>{{ shop_user.username }}</strong></p>
