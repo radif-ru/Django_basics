@@ -6,7 +6,7 @@
         <a href="{% url 'my_admin:user_create' %}" class="btn btn-primary new-user">
             новый пользователь
         </a>
-        {% for shop_user in users_list %}
+        {% for shop_user in object_list %}
             <div class="user-record
                 {% if not shop_user.is_active %}
                     not-active
@@ -47,7 +47,7 @@
                     </p>
                 </div>
                 <div class="user-age">
-                    age:<br>
+                    возраст:<br>
                     {{ shop_user.age }} лет
                 </div>
                 <div class="user-email">
@@ -55,7 +55,7 @@
                     {{ shop_user.email }}
                 </div>
                 <div class="user-lastlogin">
-                    logged:<br>
+                    заходил:<br>
                     {{ shop_user.last_login }}
                 </div>
             </div>

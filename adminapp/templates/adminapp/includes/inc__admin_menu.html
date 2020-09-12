@@ -10,14 +10,13 @@
         {% endif %}
 ">пользователи</a>
     </li>
-    <li class="
-    admin-menu-list
-    {% if request.resolver_match.url_name == 'categories' or category.name %}
-        menu_link__active
-    {% endif %}
-" >
-        <a href="{#% url 'myadmin:productcategories' %#}" class="menu_link">
-            категории
+    <li class="admin-menu-list">
+        <a href="{% url 'my_admin:categories_read' %}" class="
+        menu_link
+        {% if request.resolver_match.url_name == 'categories_read' or category.name %}
+            menu_link__active
+        {% endif %}
+">категории
             {% if category %}
                 : {{ category.name }}
             {% endif %}

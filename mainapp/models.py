@@ -6,6 +6,7 @@ class ProductCategory(models.Model):
     description = models.TextField(verbose_name='описание категории', blank=True)
     modified_date = models.DateTimeField(
         verbose_name='дата изменения', auto_now=True)
+    is_active = models.BooleanField(verbose_name='активность', default=True)
 
     def __str__(self):
         return f'{self.name} ({self.description})'
