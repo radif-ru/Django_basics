@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 
 from adminapp.forms import AdminShopUserCreateForm, AdminShopUserUpdateForm, \
     AdminProductCategoryCreateForm
@@ -155,6 +155,14 @@ class ProductCategoryCreate(OnlySuperUserMixin, PageTitleMixin, CreateView):
     model = ProductCategory
     page_title = 'админка/категории/создание'
     # success_url = reverse('my_admin:index')
-    success_url = reverse_lazy('my_admin:index')
+    success_url = reverse_lazy('my_admin:categories_read')
     # fields = '__all__'
     form_class = AdminProductCategoryCreateForm
+
+
+class ProductCategoryUpdate(OnlySuperUserMixin, PageTitleMixin, UpdateView):
+    model = ProductCategory
+    page_title = 'админка/категории/редактирование'
+    success_url = reverse_lazy('my_admin:categories_read')
+    form_class = AdminProductCategoryCreateForm
+    pk_url_kwarg = 'category_pk'

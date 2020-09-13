@@ -8,6 +8,11 @@
     </section>
     <section class="products padding-site clearfix">
         <h2>Продукты в категории {{ category.name|capfirst }}</h2>
+        <h3>({% if category.pk == 0 %}
+            Все
+        {% else %}
+            {{ category.description|capfirst }}
+        {% endif %})</h3>
         {% include 'mainapp/includes/inc__featured_new_products.html' %}
     </section>
 {% endblock %}
