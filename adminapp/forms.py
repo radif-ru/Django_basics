@@ -2,7 +2,14 @@ import django.forms as forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
-from mainapp.models import ProductCategory
+from mainapp.models import ProductCategory, Product
+
+
+class FormControlMixin:
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = f'form-control {field_name}'
 
 
 class CleanAgeMixin:
@@ -67,12 +74,13 @@ class AdminShopUserUpdateForm(UserChangeForm, CleanAgeMixin):
                 field.help_text = ''
 
 
-class AdminProductCategoryCreateForm(forms.ModelForm):
+class AdminProductCategoryCreateForm(FormControlMixin, forms.ModelForm):
     class Meta:
         model = ProductCategory
         fields = '__all__'
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = f'form-control {field_name}'
+
+class AdminProductUpdateForm(FormControlMixin, forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'

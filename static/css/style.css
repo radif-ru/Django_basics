@@ -817,6 +817,8 @@ input[type="submit"]:hover, .btn:hover {
     .user-delete div form {
       display: inline; }
 
+.categories_list .new-category {
+  margin-bottom: 1%; }
 .categories_list .not-active {
   opacity: 40%; }
 .categories_list .category-record {
@@ -825,6 +827,10 @@ input[type="submit"]:hover, .btn:hover {
   .categories_list .category-record div {
     width: 20%;
     margin-left: 1%; }
+  .categories_list .category-record img {
+    width: 200px;
+    height: 200px;
+    border-radius: 15%; }
   .categories_list .category-record .category-actions {
     display: flex;
     flex-direction: column; }
