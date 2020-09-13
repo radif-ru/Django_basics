@@ -1,5 +1,6 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
+{% load my_tags %}
 
 {% block container %}
     <section class="padding-site clearfix">
@@ -9,12 +10,12 @@
     <section class="product-dealis">
         <div class="product-dealis-container">
             <div class="product-dealis-container-img">
-                <img src="{{ media_url }}{{ hot_product.image }}" alt="{{ hot_product.name }}">
+                <img src="{{ hot_product.image|media_folder_products }}" alt="{{ hot_product.name }}">
             </div>
             <div class="product-dealis-container-img-menu">
-                <img src="{{ media_url }}{{ hot_product.image }}" alt="{{ hot_product.name }}">
-                <img src="{{ media_url }}{{ hot_product.image }}" alt="{{ hot_product.name }}">
-                <img src="{{ media_url }}{{ hot_product.image }}" alt="{{ hot_product.name }}">
+                <img src="{{ hot_product.image|media_folder_products }}" alt="{{ hot_product.name }}">
+                <img src="{{ hot_product.image|media_folder_products }}" alt="{{ hot_product.name }}">
+                <img src="{{ hot_product.image|media_folder_products }}" alt="{{ hot_product.name }}">
             </div>
         </div>
         <div class="product-dealis-container">

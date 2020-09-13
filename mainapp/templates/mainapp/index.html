@@ -1,5 +1,6 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
+{% load my_tags %}
 
 {% block container %}
     <section class="slider padding-site clearfix">
@@ -9,21 +10,25 @@
             <h2 class="slider_h2">Fishnet Chair</h2>
             <p class="slider_content">Seat and back with upholstery made of cold cure foam. Steel
                 frame, available in matt powder-coated black</p>
-            <a href="#" class="button">Order Us
+            <a href="{% url 'main:products' %}" class="button">Order Us
                 <img class="arrow" src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
         </div>
         <div class="pagination">
-            <a href="#" class="circle"></a><a href="#" class="circle circle__active"></a><a href="#"
-                                                                                            class="circle"></a>
+            <a href="#" class="circle"></a>
+            <a href="#" class="circle circle__active"></a>
+            <a href="#" class="circle"></a>
         </div>
     </section>
     <section class="products padding-site clearfix">
         <div class="products_header">
             <ul class="products-menu">
-                <li class="products-menu_list"><a href="#"
-                                                  class="products-menu_link products-menu_link__active">Featured</a>
+                <li class="products-menu_list">
+                    <a href="{% url 'main:products' %}"
+                       class="products-menu_link products-menu_link__active">Featured</a>
                 </li>
-                <li class="products-menu_list"><a href="#" class="products-menu_link">New</a></li>
+                <li class="products-menu_list">
+                    <a href="{% url 'main:products' %}"
+                       class="products-menu_link">New</a></li>
             </ul>
             <a href="{% url 'main:catalog' pk=0 %}" class="products-explore">explore all <img
                     src="{% static 'img/arrow.svg' %}"
@@ -51,12 +56,13 @@
             <h2 class="slider_h2">Fishnet Chair</h2>
             <p class="slider_content">Seat and back with upholstery made of cold cure foam. Steel
                 frame, available in matt powder-coated black</p>
-            <a href="#" class="button">Order Us
+            <a href="{% url 'main:products' %}" class="button">Order Us
                 <img class="arrow" src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
         </div>
         <div class="pagination">
-            <a href="#" class="circle"></a><a href="#" class="circle circle__active"></a><a href="#"
-                                                                                            class="circle"></a>
+            <a href="#" class="circle"></a>
+            <a href="#" class="circle circle__active"></a>
+            <a href="#" class="circle"></a>
         </div>
     </section>
     <section class="exclusive-2 padding-site">
@@ -65,16 +71,16 @@
             <h3 class="eclusive-h3">Fishnet Chair</h3>
             <p class="exlusive-content exlusive-content_w">Seat and back with upholstery made of
                 cold cure foam. Steel frame, available in matt</p>
-            <a href="#" class="button">Order Us <img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+            <a href="{% url 'main:products' %}" class="button">Order Us <img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
         </div>
         <div class="excl-products">
-            <a href="#"><img class="excl-prod" src="{% static 'img/product-2-sm.jpg' %}"
+            <a href="{% url 'main:products' %}"><img class="excl-prod" src="{% static 'img/product-2-sm.jpg' %}"
                              alt="exclusive product"></a>
-            <a href="#"><img class="excl-prod" src="{% static 'img/product-3-sm.jpg' %}"
+            <a href="{% url 'main:products' %}"><img class="excl-prod" src="{% static 'img/product-3-sm.jpg' %}"
                              alt="exclusive product"></a>
-            <a href="#"><img class="excl-prod" src="{% static 'img/product-4-sm.jpg' %}"
+            <a href="{% url 'main:products' %}"><img class="excl-prod" src="{% static 'img/product-4-sm.jpg' %}"
                              alt="exclusive product"></a>
-            <a href="#"><img class="excl-prod" src="{% static 'img/product-5-sm.jpg' %}"
+            <a href="{% url 'main:products' %}"><img class="excl-prod" src="{% static 'img/product-5-sm.jpg' %}"
                              alt="exclusive product"></a>
         </div>
     </section>

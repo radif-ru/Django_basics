@@ -8,7 +8,6 @@ from authapp.models import ShopUser
 from basketapp.models import BasketItem
 from mainapp.models import Product
 from mainapp.views import LINKS_MENU, get_categories
-from shop.settings import MEDIA_URL
 
 
 @login_required
@@ -20,7 +19,6 @@ def index(request):
     context = {
         'page_title': 'корзина',
         'links_menu': LINKS_MENU,
-        'media_url': MEDIA_URL,
         'basket_items': basket_items,
     }
     return render(request, 'basketapp/index.html', context)
@@ -70,7 +68,6 @@ def change(request, pk, quantity):
 
         context = {
             'links_menu': LINKS_MENU,
-            'media_url': MEDIA_URL,
             'basket_items': request.user.user_basket.all(),
         }
         basket_items = loader.render_to_string(

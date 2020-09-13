@@ -72,7 +72,7 @@ body {
   font-weight: 300;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 10px 13px;
+  padding: 10px 10px;
   transition: 0.1s; }
   .menu_link:not(.menu_link__active):hover {
     color: #212121;
@@ -793,8 +793,10 @@ input[type="submit"]:hover, .btn:hover {
   margin-bottom: 1%; }
 .users-list .user-record {
   display: flex;
-  justify-content: space-between;
   margin-bottom: 1%; }
+  .users-list .user-record div {
+    width: 20%;
+    margin-left: 1%; }
   .users-list .user-record img {
     width: 200px;
     height: 200px;
@@ -834,5 +836,15 @@ input[type="submit"]:hover, .btn:hover {
   .categories_list .category-record .category-actions {
     display: flex;
     flex-direction: column; }
+
+.paginator {
+  text-align: center; }
+  .paginator:hover {
+    transition: 0.3s;
+    transform: scale(1.3); }
+  .paginator a {
+    text-decoration: none;
+    font-weight: bold;
+    color: salmon; }
 
 /*# sourceMappingURL=style.css.map */

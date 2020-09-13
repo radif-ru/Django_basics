@@ -38,4 +38,6 @@ urlpatterns = [
          name='category_products'),
     path('category/<int:category_pk>/product/create/', adminapp.product_create,
          name='product_create'),
+    path('category/<int:pk>/product/update/', adminapp.product_update,
+         name='product_update'),
 ]

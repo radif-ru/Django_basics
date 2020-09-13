@@ -4,12 +4,11 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 from adminapp.forms import AdminShopUserCreateForm, AdminShopUserUpdateForm, \
     AdminProductCategoryCreateForm, AdminProductUpdateForm
-from mainapp.models import ProductCategory
-from shop.settings import MEDIA_URL
+from mainapp.models import ProductCategory, Product
 
 
 # Незалогиненного отправляем логинится. Проверяем является ли пользователь суперюзером
@@ -22,7 +21,6 @@ from shop.settings import MEDIA_URL
 #     context = {
 #         'page_title': 'админка/пользователи',
 #         'users_list': users_list,
-#         'media_url': MEDIA_URL
 #     }
 #
 #     return render(request, 'adminapp/index.html', context)
@@ -42,22 +40,13 @@ class PageTitleMixin:
         return data
 
 
-class MediaUrlMixin:
-    def get_context_data(self, *, object_list=None, **kwargs):
-        data = super().get_context_data(object_list=None, **kwargs)
-        data['media_url'] = self.media_url
-        return data
-
-
-class UsersList(OnlySuperUserMixin, PageTitleMixin, MediaUrlMixin, ListView):
+class UsersList(OnlySuperUserMixin, PageTitleMixin, ListView):
     model = get_user_model()
 
     page_title = 'админка/пользователи'
-    media_url = MEDIA_URL
 
     # extra_context = {
     #     'page_title': 'админка/пользователи',
-    #     'media_url': MEDIA_URL
     # }
 
     # def get_queryset(self):
@@ -146,6 +135,7 @@ def user_delete(request, pk):
 class ProductCategoriesRead(OnlySuperUserMixin, PageTitleMixin, ListView):
     model = ProductCategory
     page_title = 'админка/категории'
+    # paginate_by = 3
     # extra_context = {
     #     'page_title': 'админка/категории',
     # }
@@ -190,7 +180,6 @@ def category_products(request, category_pk):
         'page_title': f'категория {category.name}/продукты',
         'category': category,
         'object_list': object_list,
-        'media_url': MEDIA_URL
     }
     return render(request, 'adminapp/category_products_list.html', context)
 
@@ -223,48 +212,49 @@ def product_create(request, category_pk):
     }
     return render(request, 'adminapp/product_update.html', context)
 
-# @user_passes_test(lambda u: u.is_superuser)
-# def product_update(request, pk):
-#     product = get_object_or_404(Product, pk)
-#
-#     if request.method == 'POST':
-#         form = AdminProductUpdateForm(request.POST, request.FILES, instance=product)
-#         if form.is_valid():
-#             form.save()
-#             return HttpResponseRedirect(reverse(
-#                 'my_admin:category_products',
-#                 kwargs={'pk': product.category.pk}
-#             ))
-#         else:
-#             form = AdminProductUpdateForm(instance=product)
-#
-#     context = {
-#         'page_title': 'продукты/редактирование',
-#         'form': form,
-#         'category': product.category
-#     }
-#     return render(request, 'adminapp/product_update.html', context)
-#
-#
-# @user_passes_test(lambda u: u.is_superuser)
-# def product_delete(request, pk):
-#     obj = get_object_or_404(Product, pk)
-#
-#     if request.method == 'POST':
-#         obj.is_active = False
-#         obj.save()
-#         return HttpResponseRedirect(reverse(
-#             'my_admin:category_products',
-#             kwargs={'pk': obj.category.pk}
-#         ))
-#
-#     context = {
-#         'page_title': 'продукты/удаление',
-#         'object': obj,
-#     }
-#     return render(request, 'adminapp/product_delete.html', context)
-#
-#
+
+@user_passes_test(lambda u: u.is_superuser)
+def product_update(request, pk):
+    product = get_object_or_404(Product, pk)
+
+    if request.method == 'POST':
+        form = AdminProductUpdateForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse(
+                'my_admin:category_products',
+                kwargs={'pk': product.category.pk}
+            ))
+    else:
+        form = AdminProductUpdateForm(instance=product)
+
+    context = {
+        'page_title': 'продукты/редактирование',
+        'form': form,
+        'category': product.category
+    }
+    return render(request, 'adminapp/product_update.html', context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def product_delete(request, pk):
+    obj = get_object_or_404(Product, pk)
+
+    if request.method == 'POST':
+        obj.is_active = False
+        obj.save()
+        return HttpResponseRedirect(reverse(
+            'my_admin:category_products',
+            kwargs={'pk': obj.category.pk}
+        ))
+
+    context = {
+        'page_title': 'продукты/удаление',
+        'object': obj,
+    }
+    return render(request, 'adminapp/product_delete.html', context)
+
+
 # class ProductDetail(DetailView):
 #     model = Product
 #     pk_url_kwarg = 'product_pk'

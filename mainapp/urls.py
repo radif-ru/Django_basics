@@ -25,6 +25,7 @@ urlpatterns = [
 
     path('category/<int:pk>/catalog/', mainapp.catalog, name='catalog'),
     # re_path(r'^category/(?P<pk>\d+)/catalog/$', mainapp.catalog, name='catalog'),
+    path('category/<int:pk>/catalog/<int:page>', mainapp.catalog, name='catalog_page'),
 
     path('showroom/', mainapp.showroom, name='showroom'),
     path('category/<int:pk>/showroom/', mainapp.showroom, name='showroom_catalog'),

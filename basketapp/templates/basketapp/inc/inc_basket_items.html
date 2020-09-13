@@ -1,7 +1,9 @@
+{% load my_tags %}
+
 {% if basket_items %}
     {% for item in basket_items %}
         <div class="basket-item-wrapper">
-            <img src="{{ media_url }}{{ item.product.image }}"
+            <img src="{{ item.product.image|media_folder_products }}"
                  alt="{{ item.product.short_desc }}">
             <span class="category-name">{{ item.product.category.name }}</span>
             <span class="product-name">{{ item.product.name }}</span>

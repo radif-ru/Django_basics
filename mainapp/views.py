@@ -2,10 +2,11 @@ import json
 import os
 import random
 
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, get_object_or_404
 
 from mainapp.models import ProductCategory, Product
-from shop.settings import BASE_DIR, JSON_PATH, MEDIA_URL
+from shop.settings import BASE_DIR, JSON_PATH
 
 with open(os.path.join(BASE_DIR, f'{JSON_PATH}/links_menu.json'),
           encoding="utf-8") as f:
@@ -41,7 +42,6 @@ def index(request):
         'page_title': 'INTERIOR',
         'links_menu': LINKS_MENU,
         'products': all_products[:3],
-        'media_url': MEDIA_URL,
         'featured_new_products': featured_new_products[:4],
     }
     return render(request, 'mainapp/index.html', context)
@@ -56,7 +56,6 @@ def products(request):
         'links_menu': LINKS_MENU,
         'categories': get_categories(),
         'products': _related_products,
-        'media_url': MEDIA_URL,
         'hot_product': hot_product,
     }
     return render(request, 'mainapp/products.html', context)
@@ -68,7 +67,6 @@ def product_page(request, pk):
         'links_menu': LINKS_MENU,
         'categories': get_categories(),
         'product': get_object_or_404(Product, pk=pk),
-        'media_url': MEDIA_URL,
     }
     return render(request, 'mainapp/product_page.html', context)
 
@@ -85,7 +83,6 @@ def showroom(request, pk=0):
         'links_menu': LINKS_MENU,
         'categories': get_categories(),
         'products': all_products,
-        'media_url': MEDIA_URL,
     }
     return render(request, 'mainapp/showroom.html', context)
 
@@ -99,7 +96,7 @@ def contact(request):
     return render(request, 'mainapp/contact.html', context)
 
 
-def catalog(request, pk):
+def catalog(request, pk, page=1):
     # try:
     #     category = ProductCategory.objects.get(pk=pk)
     # except ...
@@ -109,12 +106,20 @@ def catalog(request, pk):
     else:
         category = get_object_or_404(ProductCategory, pk=pk)
         all_products = Product.objects.filter(category=category).order_by('price')
+
+    products_paginator = Paginator(all_products, 8)
+    try:
+        all_products = products_paginator.page(page)
+    except PageNotAnInteger:
+        all_products = products_paginator.page(1)
+    except EmptyPage:
+        all_products = products_paginator.page(products_paginator.num_pages)
+
     context = {
         'page_title': 'Catalog',
         'links_menu': LINKS_MENU,
         'categories': get_categories(),
         'category': category,
         'products': all_products,
-        'media_url': MEDIA_URL,
     }
     return render(request, 'mainapp/catalog.html', context)
