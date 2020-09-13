@@ -3,7 +3,7 @@
 
 {% block container %}
     <div class="categories_list">
-        <a href="{#% url 'my_admin:category_create' %#}" class="btn btn-primary new-category">
+        <a href="{% url 'my_admin:category_create' %}" class="btn btn-primary new-category">
             новая категория
         </a>
         {% for object in object_list %}

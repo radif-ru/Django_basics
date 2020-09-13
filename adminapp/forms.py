@@ -2,6 +2,8 @@ import django.forms as forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
+from mainapp.models import ProductCategory
+
 
 class CleanAgeMixin:
     def clean_age(self):
@@ -21,8 +23,6 @@ class AdminShopUserCreateForm(UserCreationForm, CleanAgeMixin):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = f'form-control {field_name}'
-            # field.help_text = ''  # очистка стандартного справочного текста
-            # (слишком громоздкий)
 
             if field_name == 'username':
                 field.widget.attrs['placeholder'] = 'введите имя'
@@ -36,7 +36,9 @@ class AdminShopUserCreateForm(UserCreationForm, CleanAgeMixin):
                 field.widget.attrs['placeholder'] = 'введите возраст'
                 field.help_text = '* обязательное поле'
                 field.label += '*'
-    # def clean_avatar(self):
+            else:
+                field.help_text = ''
+                # def clean_avatar(self):
     #     pass
 
 
@@ -50,7 +52,6 @@ class AdminShopUserUpdateForm(UserChangeForm, CleanAgeMixin):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = f'form-control {field_name}'
-            # field.help_text = ''  # очистка стандартного справочного текста (слишком громоздкий)
 
             if field_name == 'username':
                 field.widget.attrs['placeholder'] = 'введите имя'
@@ -62,3 +63,16 @@ class AdminShopUserUpdateForm(UserChangeForm, CleanAgeMixin):
                 field.widget.attrs['placeholder'] = 'введите возраст'
                 field.help_text = '* обязательное поле'
                 field.label += '*'
+            else:
+                field.help_text = ''
+
+
+class AdminProductCategoryCreateForm(forms.ModelForm):
+    class Meta:
+        model = ProductCategory
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = f'form-control {field_name}'

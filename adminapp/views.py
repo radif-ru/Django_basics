@@ -2,11 +2,12 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 
-from adminapp.forms import AdminShopUserCreateForm, AdminShopUserUpdateForm
+from adminapp.forms import AdminShopUserCreateForm, AdminShopUserUpdateForm, \
+    AdminProductCategoryCreateForm
 from mainapp.models import ProductCategory
 from shop.settings import MEDIA_URL
 
@@ -44,7 +45,6 @@ class PageTitleMixin:
 class MediaUrlMixin:
     def get_context_data(self, *, object_list=None, **kwargs):
         data = super().get_context_data(object_list=None, **kwargs)
-        # print(data)
         data['media_url'] = self.media_url
         return data
 
@@ -143,9 +143,18 @@ def user_delete(request, pk):
 #     template_name = 'adminapp/categories_list.html'
 
 
-class CategoriesRead(OnlySuperUserMixin, PageTitleMixin, ListView):
+class ProductCategoriesRead(OnlySuperUserMixin, PageTitleMixin, ListView):
     model = ProductCategory
     page_title = 'админка/категории'
     # extra_context = {
     #     'page_title': 'админка/категории',
     # }
+
+
+class ProductCategoryCreate(OnlySuperUserMixin, PageTitleMixin, CreateView):
+    model = ProductCategory
+    page_title = 'админка/категории/создание'
+    # success_url = reverse('my_admin:index')
+    success_url = reverse_lazy('my_admin:index')
+    # fields = '__all__'
+    form_class = AdminProductCategoryCreateForm
