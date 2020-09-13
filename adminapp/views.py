@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from adminapp.forms import AdminShopUserCreateForm, AdminShopUserUpdateForm, \
     AdminProductCategoryCreateForm
@@ -166,3 +166,16 @@ class ProductCategoryUpdate(OnlySuperUserMixin, PageTitleMixin, UpdateView):
     success_url = reverse_lazy('my_admin:categories_read')
     form_class = AdminProductCategoryCreateForm
     pk_url_kwarg = 'category_pk'
+
+
+class ProductCategoryDelete(OnlySuperUserMixin, PageTitleMixin, DeleteView):
+    model = ProductCategory
+    page_title = 'админка/категории/удаление'
+    success_url = reverse_lazy('my_admin:categories_read')
+
+    # Переопределяем delete для того, чтобы вместо жесткого удаления делать категорию инактивной
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.is_active = False
+        self.object.save()
+        return HttpResponseRedirect(self.success_url)

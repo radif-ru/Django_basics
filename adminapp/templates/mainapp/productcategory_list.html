@@ -20,10 +20,12 @@
                        class="btn btn-success">
                         редактировать
                     </a>
-                    <a href="{#% url 'my_admin:category_delete' object.pk %#}"
-                       class="btn btn-danger">
-                        удалить
-                    </a>
+                    {% if object.is_active %}
+                        <a href="{% url 'my_admin:category_delete' object.pk %}"
+                           class="btn btn-danger">
+                            удалить
+                        </a>
+                    {% endif %}
                 </div>
                 <div class="category-desc">
                     {{ object.description }}
