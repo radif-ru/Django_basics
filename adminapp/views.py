@@ -215,7 +215,8 @@ def product_create(request, category_pk):
 
 @user_passes_test(lambda u: u.is_superuser)
 def product_update(request, pk):
-    product = get_object_or_404(Product, pk)
+    product = get_object_or_404(Product, pk=pk)
+    print(product)
 
     if request.method == 'POST':
         form = AdminProductUpdateForm(request.POST, request.FILES, instance=product)
@@ -223,7 +224,7 @@ def product_update(request, pk):
             form.save()
             return HttpResponseRedirect(reverse(
                 'my_admin:category_products',
-                kwargs={'pk': product.category.pk}
+                kwargs={'category_pk': product.category.pk}
             ))
     else:
         form = AdminProductUpdateForm(instance=product)
@@ -238,14 +239,14 @@ def product_update(request, pk):
 
 @user_passes_test(lambda u: u.is_superuser)
 def product_delete(request, pk):
-    obj = get_object_or_404(Product, pk)
+    obj = get_object_or_404(Product, pk=pk)
 
     if request.method == 'POST':
         obj.is_active = False
         obj.save()
         return HttpResponseRedirect(reverse(
             'my_admin:category_products',
-            kwargs={'pk': obj.category.pk}
+            kwargs={'category_pk': obj.category.pk}
         ))
 
     context = {
@@ -255,6 +256,8 @@ def product_delete(request, pk):
     return render(request, 'adminapp/product_delete.html', context)
 
 
-# class ProductDetail(DetailView):
-#     model = Product
-#     pk_url_kwarg = 'product_pk'
+class ProductDetail(PageTitleMixin, DetailView):
+    page_title = 'Продукт'
+    model = Product
+    pk_url_kwarg = 'product_pk'
+    context_object_name = 'product'

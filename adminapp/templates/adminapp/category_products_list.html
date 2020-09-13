@@ -18,16 +18,16 @@
                     {{ object.name|title }}
                 </div>
                 <div class="category-actions">
-                    <a href="{#% url 'my_admin:product_read' object.pk %#}"
+                    <a href="{% url 'my_admin:product_read' object.pk %}"
                        class="btn btn-info">
                         подробнее
                     </a>
-                    <a href="{#% url 'my_admin:product_update' object.pk %#}"
+                    <a href="{% url 'my_admin:product_update' object.pk %}"
                        class="btn btn-success">
                         редактировать
                     </a>
                     {% if object.is_active %}
-                        <a href="{#% url 'my_admin:product_delete' object.pk %#}"
+                        <a href="{% url 'my_admin:product_delete' object.pk %}"
                            class="btn btn-danger">
                             удалить
                         </a>
