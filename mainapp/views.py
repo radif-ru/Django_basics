@@ -71,18 +71,28 @@ def product_page(request, pk):
     return render(request, 'mainapp/product_page.html', context)
 
 
-def showroom(request, pk=0):
+def showroom(request, pk=0, page=1):
     if pk == 0:
-        category = {'pk': 0, 'name': 'all'}
+        category = {'pk': 0, 'name': 'all', 'page': 1}
         all_products = Product.objects.all().order_by('-pk')
     else:
         category = get_object_or_404(ProductCategory, pk=pk)
         all_products = Product.objects.filter(category=category).order_by('price')
+
+    products_paginator = Paginator(all_products, 6)
+    try:
+        all_products = products_paginator.page(page)
+    except PageNotAnInteger:
+        all_products = products_paginator.page(1)
+    except EmptyPage:
+        all_products = products_paginator.page(products_paginator.num_pages)
+
     context = {
         'page_title': 'Showroom',
         'links_menu': LINKS_MENU,
         'categories': get_categories(),
         'products': all_products,
+        'category': category,
     }
     return render(request, 'mainapp/showroom.html', context)
 

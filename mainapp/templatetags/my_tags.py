@@ -5,7 +5,7 @@ register = template.Library()
 
 
 def media_folder_products(string):
-    """ Шаблонный фильтр медифайлов продуктов
+    """ Шаблонный фильтр медифайлов продуктовs
 
     Автоматически добавляет относительный URL-путь к медиафайлам продуктов
     products_images/product1.jpg --> /media/products_images/product1.jpg
