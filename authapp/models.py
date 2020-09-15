@@ -13,4 +13,6 @@ class ShopUser(AbstractUser):
         return sum(item.quantity for item in self.user_basket.all())
 
     class Meta:
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
         ordering = ['-is_active', '-is_superuser', '-is_staff', 'username']

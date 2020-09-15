@@ -8,6 +8,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView, D
 
 from adminapp.forms import AdminShopUserCreateForm, AdminShopUserUpdateForm, \
     AdminProductCategoryCreateForm, AdminProductUpdateForm
+from authapp.models import ShopUser
 from mainapp.models import ProductCategory, Product
 
 
@@ -216,7 +217,7 @@ def product_create(request, category_pk):
 @user_passes_test(lambda u: u.is_superuser)
 def product_update(request, pk):
     product = get_object_or_404(Product, pk=pk)
-    print(product)
+    # print(product)
 
     if request.method == 'POST':
         form = AdminProductUpdateForm(request.POST, request.FILES, instance=product)

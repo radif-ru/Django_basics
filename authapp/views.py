@@ -31,7 +31,7 @@ def login(request):
                 return HttpResponseRedirect(reverse('main:index'))
     else:
         # form = ShopUserAuthenticationForm()
-        print(request.GET)
+        # print(request.GET)
         form = ShopUserAuthenticationForm(data=request.GET or None)
     context = {
         'page_title': 'аутентификация',

@@ -705,6 +705,8 @@ body {
     border-top: 1px solid #ced4da; }
   .login .form-control::placeholder {
     color: darkgreen; }
+  .login .image {
+    padding: 3px; }
 
 .helptext {
   color: salmon; }
